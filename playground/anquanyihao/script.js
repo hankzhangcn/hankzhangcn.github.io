@@ -22,7 +22,7 @@ tex => {
   texture.minFilter = THREE.LinearFilter;
 
   loader.load(
-  'https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/%E5%AE%89%E5%85%A8%E4%B8%80%E5%8F%B7.29pj3dmeyl7o.png',
+  'https://raw.githubusercontent.com/hankzhangcn/CDN/master/img/%E5%AE%89%E5%85%A8%E4%B8%80%E5%8F%B7.29pj3dmeyl7o.png',
   tex => {
     _500 = tex;
 
