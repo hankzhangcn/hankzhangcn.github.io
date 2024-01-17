@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Hank">
+    
+    <title>
+        
+            回忆的新 |
+        
+        电瀚
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"hankzhang.cn","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"电瀚","author":"Hank","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"Archives":"/archives","Links":"/links","About":"/about","Changelog":"/changelog"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/hankzhangcn","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"mailto://whoishank@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"category":false,"tag":false,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null},"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"https://hankzhang-comment.netlify.app/.netlify/functions/twikoo","region":null,"version":"1.6.22"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"unpkg"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"style":{"primary_color":"#eccc68","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","first_screen":{"enable":true,"background_img":"https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/IFS国金中心.6vtxrc499gw0.jpg","description":"专注电子信息 的 电瀚","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"home_article":{"category":{"enable":false,"limit":3},"tag":{"enable":false,"limit":5}},"root":"","version":"4.0.6"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               电瀚
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class=""
+                           href="/"
+                        >首页</a>
+                    </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >归档</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >友链</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >关于</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >更新日志</a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            <li class="drawer-menu-item flex-center">
+                <a class=""
+                   href="/"
+                >首页</a>
+            </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog"
+                    >更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        回忆的新
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Hank</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-01-17 15:48</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Jan 17 2024 08:00:42 GMT+0000">2024-01-17 08:00</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="新的"><a href="#新的" class="headerlink" title="新的"></a>新的</h1><p>广铁真的在抢钱。常益长高铁154公里，一个小时时长居然要收103块？！我开玩笑说真的是车票效益最小化。停了一年的普速，也就是29.5的那些列车，宣布是2023年底开，可究竟是没有开。又听说过年前会开，为了给爸爸买回家的车票，我去查了查常德站北广场究竟什么时候能再开通。 </p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.163.com/dy/article/IO6J44MM0530VRJ4.html" >常德火车站北站房即将交付使用|站台|旅客|高架|站场|常德市|候车大厅_网易订阅 (163.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.sohu.com/a/751645627_121117478" >常德火车站“绿皮车”即将恢复通车，老乡回家方便了！_候车_武陵_桃花 (sohu.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.163.com/dy/article/IMGAECAD05504B7H.html" >我市召开常德高铁站站前广场移交调度会|北广场|南广场|常德市_网易订阅 (163.com)<i class="fas fa-external-link-alt"></i></a> </p>
+<p>看样子1月20号之前能开呢。 </p>
+<p>在浏览的时候，我想去看看北站房的卫星图，究竟修到什么程度了。高德上常德市的卫星地图，似乎很久没更新了，旧常德站仍然展现在荧幕上。旧的站房是在1997年修成的，为了修建新的高铁常德站，现已经完全消失了。我随意滑动着指尖的常德城市，城市的更替，小西门的消失，让我意识到自己的童年时代的见证人正在渐渐离去。 </p>
+<h1 id="我的童年在小西门外"><a href="#我的童年在小西门外" class="headerlink" title="我的童年在小西门外"></a>我的童年在小西门外</h1><p>在我小学的时候，有一条从建设路直达人民路育英小学的巷口，是常德城外从小西门到西门的那个区块，那就是最初的西门。初中时，这块地方划入了城市翻新的区域，巷口、租碟店，熟悉的路全都已经不在，取而代之的是古典风格、错落有致的城市广场以及高耸的住宅楼。但至今仿如无人之境，远不如之前热闹。不知是常德城落寞了还是如何？ </p>
+<p>小西门外口的那个区块，曾经的小西门建筑市场、小西门百货，小西门菜市场早已经被拆完了，但新建筑仍未来得及填充这片赤裸的黄土地，只留下湘北建筑大厦独自坚守，诉说这里曾经的繁荣。我曾在湘北建设大厦的附楼小区中住过一段时间，记忆中单面开阔的筒子楼里，我和妈妈在房间中，爱吃的零食是「九芝堂」，傍晚走廊上的便捷灶台上，人家正在炒菜做饭。 </p>
+<p>伯伯说，那时建成时，公司豪言大厦能够持续20年不过时，如今正逢21年，这座不足十层高的建筑已经外表沧桑，蓝色的窗棱玻璃和风霜摧残过的「湘北大厦」四个暗红色大字提示着它的老去。楼下，曾经应该是华星电器，如今已经闭店。旁边的德辉宾馆早已更替，公交站名也从「德辉宾馆」变成了「老西门」。一旁的夫妻便利店仍还是便利店，只是经营者早已不是我的小伯，童年门前丢失的那只咪咪也已经永远分别。 </p>
+<p>我的爷爷曾经供职于湘北公司，公司有一个职工大院叫「湘北新村」，位置就在如今的「方家桥巷骅街口巷口」。03年公司破产后，我在湘北新村一直居住到17岁。凝视「骅街口巷」，「骅」是什么意思？我查了查，似乎仅仅只能作为地名。「方家桥巷」，这里以前一定是池塘。 </p>
+<p>我去翻阅常德老地图，原来这里真的是一个池塘，位于「小西门外正街骅街口」上，也许这里真的有过桥，方家桥巷也许因此得名。目光舒展到东面，「北正街」「卫门口」只剩下那些学校来坚守这些老地名。为什么北堤麻辣肉（菽肉）要叫北堤，看着地图，这里是常德老北门，我猜测说北堤指的是外面是常德护城河堤。如今一中对门的公园巷里，有一家不足3平米的北堤麻辣肉直营店，他们从这里出发，也在这里守候。「黄（皇）金台」「衙门口」「灵官庙」，未来的人想问这里的故事又该找谁？ </p>
+<p>沉浸在老地图中，我实实在在感受到了历史流逝。上周爷爷去世的时候，姐姐跟我说，「常德已经没有念想了，以后不会再回来了」。我也踏在历史的履带上，以一种被人拉扯的感觉向前运转。沉淀下来的，涌上来的，是那种「永远都回不去了」的感受。</p>
+<p><img   src="https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/image.20voojz671y.webp"  alt="image"><br><img   src="https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/image.2n4lexqjmik0.webp"  alt="image"><br><img   src="https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/image.ctims8i05so.webp"  alt="image"><br><img   src="https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/image.1saif4qg6vj4.webp"  alt="image"><br><img   src="https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/image.5oiydrg0fok.webp"  alt="image"><br><img   src="https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/image.2og91v1ij540.webp"  alt="image"></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.sohu.com/a/334564992_645201" >常德城70年巨变史（历史照片+今日航拍 ）_龚光平 (sohu.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.txlzp.com/ditu/8517.html" >1947年《常德县城地籍一览图》_历史地图网 (txlzp.com)<i class="fas fa-external-link-alt"></i></a> </p>
+<h1 id="用石长线连接我"><a href="#用石长线连接我" class="headerlink" title="用石长线连接我"></a>用石长线连接我</h1><p>小时候坐石长线真的是一种折磨。那个时候，近三百公里的慢速火车挺难熬的，更何况对于当时只有八九岁的我。盛夏晚上，我和阿姨在车厢里吃着从石门家中自己做的龙虾，摇摇晃晃之间就到了长沙。记忆中车票很贵，在我小学二年级的时候，我成功地从石门县站混了进去，可因为身高太高了，在长沙站被拦了下来。阿姨回来帮我补票，票面价格79.5元。我在涂家冲的一楼房间里，挺晚了，阿姨开玩笑跟我说，这张车票要找我妈报销。那个暑假，我在石门县青峰第一次有了QQ号，洗了一暑假的大澡堂，在夜里洗完澡后去办公楼玩Flash版的武林外传小游戏。后来在长沙，我和表弟以及他的堂妹去了烈士公园。之后的每一年来长沙，我们都会去一个新的地方世界之窗、海底世界、酷贝拉等等。 </p>
+<p>有一年我和外公外婆在石长线捞刀河段。只需要一会儿就能到长沙站了，但偏偏就在捞刀河边停了一个多小时。我当时在火车上就开始发烧，烧得头晕眼花，胡言乱语。到了后，在长沙待了三天，烧了三天，导致那时的我对石长线捞刀河段产生了巨大阴影，一直到上大学了才想开。 </p>
+<p>想着，我也许是个伪铁路迷，是这种感觉能让我暂时实现对过去的一瞥，便暂且自封为近现代历史感受者吧。在还来得及的时候，我也想去能触及到的过去感受几分。朋友圈有一对Couple，其中之一也是铁路迷。他们去了曾经的京广线上的长沙老北站，如今已经开发成为文旅地点。</p>
+<p><img   src="https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/image.3lt0pvmuvba0.webp"  alt="image"></p>
+<p><img   src="https://cdn.statically.io/gh/hankzhangcn/CDN@master/img/image.5tv27jbwtj80.webp"  alt="image"></p>
+<p>乘坐长沙地铁一号线或长株潭城际铁路在开福寺站下车，或乘坐公交车在开福寺路芙蓉路口公交站下车，沿着一条满是梧桐、银杏的道路沐浴着阳光慢慢闲逛。看到一个停车场岔口拐进去，向前走约100米，面前的一扇墙上满是各种海报，东风路文创园的入口就在左手边，而好评如潮的下大垅长沙创意集市就在文创园中。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/P4z3Q28Kmcpm3DwbfUupHg" >地铁直达！藏在长沙市中心的“乌托邦”集市，遛娃超人气！ (qq.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p>田间的土沟叫做「垅」，下大垅又是什么？似乎是长沙老地名。我打算放假后，自己独自去逛一逛。 </p>
+<p>曾经的京广线从芙蓉路贯穿而下，在白沙路左并入江岸（先有铁路，拆掉铁路后才有芙蓉路和白沙路）。旧的铁路分割城市，限制了城市扩张，便将整个线路东移到现在长沙站的位置，可现在的长沙站京广线也已经把城市圈了起来。随着时间过去，长沙站未来是否也会和常德站一样，成为硬盘中的数据？也许会和嘉兴站一样，只留下象征性的站房成为博物馆一样的存在。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.163.com/dy/article/FK19GC520541AGUW.html" >老长沙记忆：穿城而过的铁路风景线|京广|南站|火车站|长沙火车站_网易订阅 (163.com)<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="进步"><a href="#进步" class="headerlink" title="进步"></a>进步</h1><p>和「注意」一样，我对「进步」这个词又了新的解读。「注入意识」之「注意」，将意念专注与某物。「步进」之「进步」，意味着向前行走。进步，将过去与未来连接，是历史的演进。过去的回忆组成了我，站在门槛，我期待着我的新篇章。带着过去的回忆，携带美好的憧憬，未来在这里继续编织，Hank 亦要无限进步。</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/fc4df632226c.html"
+                                   title="久违、干扰与坚持不懈"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">久违、干扰与坚持不懈</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="twikoo-container">
+        <div id="twikoo-comment"></div>
+        <script 
+                src="//unpkg.com/twikoo@1.6.22/dist/twikoo.all.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initTwikoo = () => {
+            if (window?.twikoo) {
+              twikoo.init({
+                el: '#twikoo-comment',
+                envId: 'https://hankzhang-comment.netlify.app/.netlify/functions/twikoo',
+                region: '',
+                lang: 'zh-CN' || 'zh-CN'
+              })
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initTwikoo()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initTwikoo()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initTwikoo)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">新的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AB%A5%E5%B9%B4%E5%9C%A8%E5%B0%8F%E8%A5%BF%E9%97%A8%E5%A4%96"><span class="nav-number">2.</span> <span class="nav-text">我的童年在小西门外</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E7%9F%B3%E9%95%BF%E7%BA%BF%E8%BF%9E%E6%8E%A5%E6%88%91"><span class="nav-number">3.</span> <span class="nav-text">用石长线连接我</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E6%AD%A5"><span class="nav-number">4.</span> <span class="nav-text">进步</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Hank</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">新的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AB%A5%E5%B9%B4%E5%9C%A8%E5%B0%8F%E8%A5%BF%E9%97%A8%E5%A4%96"><span class="nav-number">2.</span> <span class="nav-text">我的童年在小西门外</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E7%9F%B3%E9%95%BF%E7%BA%BF%E8%BF%9E%E6%8E%A5%E6%88%91"><span class="nav-number">3.</span> <span class="nav-text">用石长线连接我</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E6%AD%A5"><span class="nav-number">4.</span> <span class="nav-text">进步</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/utils.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/header-shrink.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/back2top.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/toggle-theme.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/code-block.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/main.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

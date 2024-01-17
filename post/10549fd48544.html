@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Hank">
+    
+    <title>
+        
+            数据库原理复习 |
+        
+        电瀚
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"hankzhang.cn","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"电瀚","author":"Hank","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"Archives":"/archives","Links":"/links","About":"/about","Changelog":"/changelog"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/hankzhangcn","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"mailto://whoishank@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"category":false,"tag":false,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null},"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"https://hankzhang-comment.netlify.app/.netlify/functions/twikoo","region":null,"version":"1.6.22"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"unpkg"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"style":{"primary_color":"#eccc68","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","first_screen":{"enable":true,"background_img":"https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/IFS国金中心.6vtxrc499gw0.jpg","description":"专注电子信息 的 电瀚","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"home_article":{"category":{"enable":false,"limit":3},"tag":{"enable":false,"limit":5}},"root":"","version":"4.0.6"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               电瀚
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class=""
+                           href="/"
+                        >首页</a>
+                    </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >归档</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >友链</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >关于</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >更新日志</a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            <li class="drawer-menu-item flex-center">
+                <a class=""
+                   href="/"
+                >首页</a>
+            </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog"
+                    >更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+                <div class="post-content-top border-box"
+                     style="height: 13.8rem"
+                >
+                    <div class="cover-post-title">
+                        数据库原理复习
+                    </div>
+                    <img class="post-cover" src="https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/数据库原理复习_封面.2l53xcypmoo0.jpg"
+                         onerror="this.style.display='none'"
+                    >
+                </div>
+            
+
+            <div class="post-content-bottom border-box has-cover">
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Hank</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-05-06 00:00</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed May 06 2020 00:00:00 GMT+0000">2020-05-06 00:00</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <blockquote>
+<p>说在前面<br>这篇文章是我在修《数据库原理》时做的笔记，转载请注明来源。<br>请复制：</p>
+<blockquote>
+<p>本文来自<a class="link"   target="_blank" rel="noopener" href="https://hankzhangcn.gitee.io/2020/05/06/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0/" >瀚可<i class="fas fa-external-link-alt"></i></a>,转载请注明来源。<a class="link"   target="_blank" rel="noopener" href="https://hankzhangcn.gitee.io/2020/05/06/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0/" >https://hankzhangcn.gitee.io/2020/05/06/数据库原理复习/<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+</blockquote>
+<h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><h2 id="1-1-数据库系统概述"><a href="#1-1-数据库系统概述" class="headerlink" title="1.1 数据库系统概述"></a>1.1 数据库系统概述</h2><h3 id="1-1-1-四个基本概念"><a href="#1-1-1-四个基本概念" class="headerlink" title="1.1.1 四个基本概念"></a>1.1.1 四个基本概念</h3><h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><p>数据库中存储的基本对象</p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>描述事务的符号记录</p>
+<h5 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h5><p>文本，图像，音视频，档案记录等</p>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><p>与其语义密不可分，如93.<br>必须指出是人数？还是长度？</p>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>长期存在计算机，有组织，可共享的大量数据集合</p>
+<h4 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h4><p>是系统软件（大型的软件系统）</p>
+<h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><ul>
+<li>提供数据定义语言（ddl，如SQL）来定义数据库中的数据对象</li>
+<li>数据的组织、储存、管理。</li>
+<li>数据操作（增改查删）</li>
+<li>事务管理运行管理。</li>
+<li>数据库的建立和维护</li>
+</ul>
+<h4 id="DBS"><a href="#DBS" class="headerlink" title="DBS"></a>DBS</h4><p>在计算机系统中引入数据库后有：</p>
+<ul>
+<li>数据库</li>
+<li>DBMS</li>
+<li>应用工具</li>
+<li>数据库管理员DBA</li>
+</ul>
+<h3 id="1-1-2-数据管理技术的产生和发展"><a href="#1-1-2-数据管理技术的产生和发展" class="headerlink" title="1.1.2 数据管理技术的产生和发展"></a>1.1.2 数据管理技术的产生和发展</h3><p>暂略</p>
+<h3 id="1-1-3-特点"><a href="#1-1-3-特点" class="headerlink" title="1.1.3 特点"></a>1.1.3 特点</h3><p>暂略</p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><p>暂略</p>
+<h1 id="第三章-关系数据库标准语言SQL"><a href="#第三章-关系数据库标准语言SQL" class="headerlink" title="第三章 关系数据库标准语言SQL"></a>第三章 关系数据库标准语言SQL</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3.1 SQL概述</td>
+<td>×</td>
+</tr>
+<tr>
+<td>3.2 学生-课程数据库</td>
+<td>×</td>
+</tr>
+<tr>
+<td>3.3 数据定义</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>3.4 数据查询</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>3.5 数据更新</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3.6 视图</td>
+<td></td>
+</tr>
+<tr>
+<td>3.7 小结</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="3-1-SQL概述"><a href="#3-1-SQL概述" class="headerlink" title="3.1 SQL概述"></a>3.1 SQL概述</h2><h3 id="3-1-1-SQL-的产生与发展"><a href="#3-1-1-SQL-的产生与发展" class="headerlink" title="3.1.1  SQL 的产生与发展"></a>3.1.1  SQL 的产生与发展</h3><p>略</p>
+<h3 id="3-1-2-SQL的特点"><a href="#3-1-2-SQL的特点" class="headerlink" title="3.1.2  SQL的特点"></a>3.1.2  SQL的特点</h3><table>
+<thead>
+<tr>
+<th>特点</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>综合统一</td>
+<td></td>
+</tr>
+<tr>
+<td>高度非过程化</td>
+<td>&#x2F;&#x2F;只要提出“做什么”，无须了解存取路径</td>
+</tr>
+<tr>
+<td>面向集合的操作方式</td>
+<td></td>
+</tr>
+<tr>
+<td>以同一种语法结构提供多种使用方式</td>
+<td>&#x2F;&#x2F;可独立，可嵌入（c，c++等）</td>
+</tr>
+<tr>
+<td>语言简洁，易学易用</td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>动词</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据定义</td>
+<td><code>Create</code>、<code>drop</code>、<code>ALTER</code></td>
+</tr>
+<tr>
+<td>数据查询</td>
+<td><code>select</code></td>
+</tr>
+<tr>
+<td>数据操纵</td>
+<td><code>Insert</code>、<code>delete</code>、<code>update</code></td>
+</tr>
+<tr>
+<td>数据控制</td>
+<td><code>Grant</code>、<code>revoke</code></td>
+</tr>
+</tbody></table>
+<h3 id="3-1-3-SQL的基本概念"><a href="#3-1-3-SQL的基本概念" class="headerlink" title="3.1.3  SQL的基本概念"></a>3.1.3  SQL的基本概念</h3><h4 id="三级结构"><a href="#三级结构" class="headerlink" title="三级结构"></a>三级结构</h4><blockquote>
+<p>图暂略</p>
+</blockquote>
+<h4 id="基本表"><a href="#基本表" class="headerlink" title="基本表"></a>基本表</h4><ul>
+<li>本身独立存在的表</li>
+<li>SQL中一个关系就对应一个基本表</li>
+<li>一个(或多个)基本表对应一个存储文件</li>
+<li>一个表可以带若干索引</li>
+</ul>
+<h4 id="储存文件"><a href="#储存文件" class="headerlink" title="储存文件"></a>储存文件</h4><ul>
+<li>逻辑结构组成了数据库的内模式</li>
+<li>物理结构是任意的，对用户透明</li>
+</ul>
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><ul>
+<li>数据库中只存放视图的定义而不存放视图对应的数据视图是一个虚表</li>
+<li>从一个或几个基本表导出的表</li>
+<li>用户可以在视图上再定义视图</li>
+</ul>
+<h2 id="3-2-S-C表"><a href="#3-2-S-C表" class="headerlink" title="3.2 S-C表"></a>3.2 S-C表</h2><p>学生-课程模式 <code>S-C</code> :    </p>
+<ul>
+<li>学生表：<code>Student- (Sno,Sname,Ssex,- Sage,Sdept)</code></li>
+<li>课程表：<code>Course(Cno,- Cname,Cpno,Ccredit)</code></li>
+<li>学生选课表：<code>SC(Sno,Cno,Grade)</code></li>
+</ul>
+<h2 id="3-3-数据定义"><a href="#3-3-数据定义" class="headerlink" title="3.3 数据定义"></a>3.3 数据定义</h2><table>
+<thead>
+<tr>
+<th>操 作 对 象</th>
+<th>操  作  方  式</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>创  建</td>
+<td>删  除</td>
+<td>修  改</td>
+</tr>
+<tr>
+<td>数据库</td>
+<td><code>CREATE DATABASE</code></td>
+<td><code>DROP DATABASE</code></td>
+<td><code>ALTER DATABASE</code></td>
+</tr>
+<tr>
+<td>DATABASE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>模式</td>
+<td><code>CREATE SCHEMA</code></td>
+<td><code>DROP SCHEMA</code></td>
+<td></td>
+</tr>
+<tr>
+<td>SCHEMA</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>表</td>
+<td><code>CREATE TABLE</code></td>
+<td><code>DROP TABLE</code></td>
+<td><code>ALTER TABLE</code></td>
+</tr>
+<tr>
+<td>TABLE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>视  图</td>
+<td><code>CREATE VIEW</code></td>
+<td><code>DROP VIEW</code></td>
+<td></td>
+</tr>
+<tr>
+<td>VIEW</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>索  引</td>
+<td><code>CREATE INDEX</code></td>
+<td><code>DROP INDEX</code></td>
+<td></td>
+</tr>
+<tr>
+<td>INDEX</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="3-3-1-数据库"><a href="#3-3-1-数据库" class="headerlink" title="3.3.1 数据库"></a>3.3.1 数据库</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看所有的数据库</td>
+<td><code>show databases;</code></td>
+</tr>
+<tr>
+<td>创建s_t数据库</td>
+<td><code>CREATE  DATABASE  s_t;</code></td>
+</tr>
+<tr>
+<td>选择数据库</td>
+<td><code>use s_t;</code></td>
+</tr>
+<tr>
+<td>删除数据库</td>
+<td><code>DROP  DATABASE  s_t</code></td>
+</tr>
+</tbody></table>
+<h3 id="3-3-2-模式"><a href="#3-3-2-模式" class="headerlink" title="3.3.2 模式"></a>3.3.2 模式</h3><h4 id="创建一个模式"><a href="#创建一个模式" class="headerlink" title="创建一个模式"></a>创建一个模式</h4><p>并且可以在概念上将其看作是包含表、视图和权限定义的对象。</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建模式</td>
+<td><code>CREATE SCHEMA &lt;模式名&gt; AUTHORIZATION &lt;用户名&gt;</code></td>
+</tr>
+</tbody></table>
+<h5 id="例1"><a href="#例1" class="headerlink" title="[例1]"></a>[例1]</h5><p>定义一个学生-课程模式<code>S_T</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA ‘S_T’ <span class="keyword">AUTHORIZATION</span> WANG</span><br></pre></td></tr></table></figure>
+<p>为用户<code>WANG</code>定义了一个模式<code>S_T</code></p>
+<h5 id="例2"><a href="#例2" class="headerlink" title="[例2]"></a>[例2]</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA <span class="keyword">AUTHORIZATION</span> WANG</span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;模式名&gt;</code>隐含为用户名WANG<br>如果没有指定<code>&lt;模式名&gt;</code>，那么<code>&lt;模式名&gt;</code>隐含为<code>&lt;用户名&gt;</code></p>
+<p>在<code>CREATE SCHEMA</code>中可以接受<code>CREATE TABLE</code>，<code>CREATE VIEW</code>和<code>GRANT</code>子句。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA <span class="operator">&lt;</span>模式名<span class="operator">&gt;</span> <span class="keyword">AUTHORIZATION</span> <span class="operator">&lt;</span>用户名<span class="operator">&gt;</span>[<span class="operator">&lt;</span>表定义子句<span class="operator">&gt;</span><span class="operator">|</span><span class="operator">&lt;</span>视图定义子句<span class="operator">&gt;</span><span class="operator">|</span><span class="operator">&lt;</span>授权定义子句<span class="operator">&gt;</span>]</span><br></pre></td></tr></table></figure>
+<h5 id="例3"><a href="#例3" class="headerlink" title="[例3]"></a>[例3]</h5><p>MySQL不支持</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA TEST <span class="keyword">AUTHORIZATION</span> ZHANG </span><br><span class="line">    <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> TAB1(COL1 <span class="type">SMALLINT</span>， </span><br><span class="line">    COL2 <span class="type">INT</span>，</span><br><span class="line">    COL3 ，</span><br><span class="line">    COL4(<span class="number">10</span>，<span class="number">3</span>)，</span><br><span class="line">    COL5(<span class="number">5</span>，<span class="number">2</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>为用户<code>ZHANG</code>创建了一个模式<code>TEST</code>，并在其中定义了一个表<code>TAB1</code>。</p>
+<h4 id="删除模式"><a href="#删除模式" class="headerlink" title="删除模式"></a>删除模式</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> SCHEMA <span class="operator">&lt;</span>模式名<span class="operator">&gt;</span> <span class="operator">&lt;</span>CASCADE<span class="operator">|</span>RESTRICT<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="CASCADE-级联"><a href="#CASCADE-级联" class="headerlink" title="CASCADE(级联)"></a><code>CASCADE</code>(级联)</h5><ul>
+<li>删除模式的同时把该模式中所有的数据库对象全部删除</li>
+</ul>
+<h5 id="RESTRICT-限制"><a href="#RESTRICT-限制" class="headerlink" title="RESTRICT(限制)"></a><code>RESTRICT</code>(限制)</h5><ul>
+<li>如果该模式中定义了下属的数据库对象(如表、视图等)，则拒绝该- 删除语句的执行。</li>
+<li>当该模式中没有任何下属的对象时才能执行。</li>
+</ul>
+<h3 id="3-3-3-基本表的定义、删除与修改"><a href="#3-3-3-基本表的定义、删除与修改" class="headerlink" title="3.3.3 基本表的定义、删除与修改"></a>3.3.3 基本表的定义、删除与修改</h3><h4 id="定义基本表"><a href="#定义基本表" class="headerlink" title="定义基本表"></a>定义基本表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">（  <span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>[ <span class="operator">&lt;</span>列级完整性约束条件<span class="operator">&gt;</span> ]</span><br><span class="line">      [，<span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>[ <span class="operator">&lt;</span>列级完整性约束条件<span class="operator">&gt;</span>] ]</span><br><span class="line">      …</span><br><span class="line">      [，<span class="operator">&lt;</span>表级完整性约束条件<span class="operator">&gt;</span> ] </span><br><span class="line"> ）</span><br></pre></td></tr></table></figure>
+<p>有5类约束</p>
+<ul>
+<li>主关键字约束（<code>Primary</code>）</li>
+<li>外关键字约束（<code>Foreign</code>）</li>
+<li>唯一性约束（<code>Unique</code>）</li>
+<li>检查约束（<code>Check</code>）</li>
+<li>默认约束（<code>Default</code>）</li>
+</ul>
+<h5 id="例5"><a href="#例5" class="headerlink" title="[例5]"></a>[例5]</h5><p>建立“学生”表<code>Student</code>，<code>学号</code>是主码，<code>姓名</code>取值唯一。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Student(</span><br><span class="line">    Sno   <span class="type">CHAR</span>(<span class="number">9</span>) <span class="keyword">PRIMARY</span> KEY， <span class="comment">/* 列级完整性约束条件*/</span></span><br><span class="line">    Sname  <span class="type">CHAR</span>(<span class="number">20</span>)，     <span class="comment">/* Sname取唯一值*/</span></span><br><span class="line">    Ssex    <span class="type">CHAR</span>(<span class="number">2</span>)，</span><br><span class="line">    Sage   <span class="type">SMALLINT</span>，</span><br><span class="line">    Sdept  <span class="type">CHAR</span>(<span class="number">20</span>)</span><br><span class="line">) </span><br></pre></td></tr></table></figure>
+<h5 id="例6"><a href="#例6" class="headerlink" title="[例6]"></a>[例6]</h5><p>建立一个“课程”表<code>Course</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  Course(</span><br><span class="line">    Cno       <span class="type">CHAR</span>(<span class="number">4</span>)  <span class="keyword">PRIMARY</span> KEY，</span><br><span class="line">    Cname  <span class="type">CHAR</span>(<span class="number">40</span>)，</span><br><span class="line">    Cpno     <span class="type">CHAR</span>(<span class="number">4</span>) ，</span><br><span class="line">    Ccredit  <span class="type">SMALLINT</span>，</span><br><span class="line">    <span class="keyword">FOREIGN</span> KEY (Cpno) <span class="keyword">REFERENCES</span>  Course(Cno) </span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h5 id="例7"><a href="#例7" class="headerlink" title="[例7]"></a>[例7]</h5><p>建立一个“学生选课”表<code>SC</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  SC(</span><br><span class="line">       Sno  <span class="type">CHAR</span>(<span class="number">9</span>)， </span><br><span class="line">      	Cno  <span class="type">CHAR</span>(<span class="number">4</span>)，  </span><br><span class="line">      	Grade    <span class="type">SMALLINT</span>，</span><br><span class="line">      	<span class="keyword">PRIMARY</span> KEY (Sno，Cno)，  </span><br><span class="line">          <span class="comment">/* 主码由两个属性构成，必须作为表级完整性进行定义*/</span></span><br><span class="line">      	<span class="keyword">FOREIGN</span> KEY (Sno) <span class="keyword">REFERENCES</span> Student(Sno)，</span><br><span class="line">           <span class="comment">/* 表级完整性约束条件，Sno是外码，被参照表是Student */</span></span><br><span class="line">      	<span class="keyword">FOREIGN</span> KEY (Cno) <span class="keyword">REFERENCES</span> Course(Cno)</span><br><span class="line">          <span class="comment">/* 表级完整性约束条件， Cno是外码，被参照表是Course*/</span></span><br><span class="line"> )</span><br></pre></td></tr></table></figure>
+<h4 id="修改基本表"><a href="#修改基本表" class="headerlink" title="修改基本表"></a>修改基本表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">[ <span class="keyword">ADD</span> <span class="operator">&lt;</span>新列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [ 完整性约束 ] ]</span><br><span class="line">[ <span class="keyword">DROP</span> （<span class="keyword">COLUMN</span>『仅Mysql需要』） <span class="operator">&lt;</span>完整性约束名<span class="operator">&gt;</span> ]</span><br><span class="line">[ <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span><span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> ]</span><br></pre></td></tr></table></figure>
+<h5 id="例8"><a href="#例8" class="headerlink" title="[例8]"></a>[例8]</h5><p>向<code>Student</code>表增加<code>“入学时间”</code>列，其数据类型为日期型。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">ADD</span> S_entrance <span class="type">DATE</span></span><br></pre></td></tr></table></figure>
+<p>不论基本表中原来是否已有数据，新增加的列一律为空值。 </p>
+<h5 id="例9"><a href="#例9" class="headerlink" title="[例9]"></a>[例9]</h5><p>将年龄的数据类型由字符型（假设原来的数据类型是字符型）改为整数。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> Sage <span class="type">INT</span></span><br></pre></td></tr></table></figure>
+<h5 id="例10"><a href="#例10" class="headerlink" title="[例10]"></a>[例10]</h5><p>增加课程名称必须取唯一值的约束条件。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Course <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span>(Cname)</span><br></pre></td></tr></table></figure>
+<h4 id="删除基本表"><a href="#删除基本表" class="headerlink" title="删除基本表"></a>删除基本表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>［RESTRICT<span class="operator">|</span> CASCADE］</span><br></pre></td></tr></table></figure>
+<h5 id="例11"><a href="#例11" class="headerlink" title="[例11]"></a>[例11]</h5><p>删除<code>Student</code>表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span>  Student  CASCADE </span><br></pre></td></tr></table></figure>
+<p>基本表定义被删除，数据被删除<br>表上建立的索引、视图、触发器等一般也将被删除 </p>
+<h5 id="例12"><a href="#例12" class="headerlink" title="[例12]"></a>[例12]</h5><p>若表上建有视图，选择<code>RESTRICT</code>时表不能删除	</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> IS_Student      </span><br><span class="line"><span class="keyword">AS</span> </span><br><span class="line">    <span class="keyword">SELECT</span> Sno，Sname，Sage</span><br><span class="line">    <span class="keyword">FROM</span>  Student</span><br><span class="line">        <span class="keyword">WHERE</span> Sdept<span class="operator">=</span><span class="string">&#x27;IS&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Student RESTRICT	</span><br></pre></td></tr></table></figure>
+<p>如果选择<code>CASCADE</code>时可以删除表，视图也自动被删除 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Student CASCADE</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-4-索引的建立与删除"><a href="#3-3-4-索引的建立与删除" class="headerlink" title="3.3.4 索引的建立与删除"></a>3.3.4 索引的建立与删除</h3><h4 id="索引目的"><a href="#索引目的" class="headerlink" title="索引目的"></a>索引目的</h4><ul>
+<li>加快查询</li>
+</ul>
+<h4 id="关于方法"><a href="#关于方法" class="headerlink" title="关于方法"></a>关于方法</h4><ul>
+<li>B+树索引具有动态平衡的优点 </li>
+<li>HASH索引具有查找速度快的特点</li>
+<li>用B+树，还是HASH索引 则由具体的RDBMS来决定。</li>
+</ul>
+<h4 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span> INDEX <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">ON</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>(<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>[<span class="operator">&lt;</span>次序<span class="operator">&gt;</span>][,<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>[<span class="operator">&lt;</span>次序<span class="operator">&gt;</span>] ]…)</span><br><span class="line">[<span class="keyword">using</span> btree<span class="operator">/</span> hash]</span><br></pre></td></tr></table></figure>
+<p><code>UNIQUE</code>：相当于增加了一个UNIQUE约束。<br><code>CLUSTER</code>：聚簇索引。有主键就用主键，如果没有就用唯一非空，还没有就会自动建立一个。</p>
+<h5 id="一些提示"><a href="#一些提示" class="headerlink" title="一些提示"></a>一些提示</h5><ul>
+<li>在最经常查询的列上建立聚簇索引以高查询效率 </li>
+<li>一个基本表上最多只能建立一个聚簇引 </li>
+<li>聚簇索引的适用范围</li>
+<li>很少对基表进行增删操作</li>
+<li>很少对其中的变长列进行修改操作</li>
+<li>经常更新的列不宜建立聚簇索引</li>
+<li>用&lt;次序&gt;指定索引值的排列次序<br>升序：<code>ASC</code>；降序：<code>DESC</code>；缺省值：<code>ASC</code></li>
+</ul>
+<h4 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="例13"><a href="#例13" class="headerlink" title="[例13]"></a>[例13]</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> CLUSTER INDEX Stusname </span><br><span class="line">    <span class="keyword">ON</span>   Student(Sname)</span><br></pre></td></tr></table></figure>
+<p>在S<code>tudent</code>表的<code>Sname</code>列上建立一个聚簇索引</p>
+<h5 id="例14"><a href="#例14" class="headerlink" title="[例14]"></a>[例14]</h5><p>为学生-课程数据库中的<code>Student</code>，<code>Course</code>，<code>SC</code>三个表建立索引。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX  Stusno <span class="keyword">ON</span> Student(Sno)</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX  Coucno <span class="keyword">ON</span> Course(Cno)</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX  SCno <span class="keyword">ON</span> SC(Sno <span class="keyword">ASC</span>,Cno <span class="keyword">DESC</span>)</span><br></pre></td></tr></table></figure>
+<p><code>Student</code>表按学号升序建唯一索引<br><code>Course</code>表按课程号升序建唯一索引<br><code>SC</code>表按学号升序和课程号降序建唯一索引</p>
+<h5 id="例15"><a href="#例15" class="headerlink" title="[例15]"></a>[例15]</h5><p>删除<code>Student</code>表的<code>Sname</code>索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX Sname <span class="keyword">on</span> student;</span><br></pre></td></tr></table></figure>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/94b944b548cf.html"
+                                   title="有关函数渐近的界的定理"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">有关函数渐近的界的定理</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/2f53134684ec.html"
+                                   title="音乐回忆 2020"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">音乐回忆 2020</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="twikoo-container">
+        <div id="twikoo-comment"></div>
+        <script 
+                src="//unpkg.com/twikoo@1.6.22/dist/twikoo.all.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initTwikoo = () => {
+            if (window?.twikoo) {
+              twikoo.init({
+                el: '#twikoo-comment',
+                envId: 'https://hankzhang-comment.netlify.app/.netlify/functions/twikoo',
+                region: '',
+                lang: 'zh-CN' || 'zh-CN'
+              })
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initTwikoo()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initTwikoo()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initTwikoo)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">第一章 绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 数据库系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E5%9B%9B%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 四个基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A7%8D%E7%B1%BB"><span class="nav-number">1.1.1.1.2.</span> <span class="nav-text">种类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">1.1.1.1.3.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBMS"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">DBMS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBS"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">DBS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%8A%80%E6%9C%AF%E7%9A%84%E4%BA%A7%E7%94%9F%E5%92%8C%E5%8F%91%E5%B1%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 数据管理技术的产生和发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E7%89%B9%E7%82%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 特点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL"><span class="nav-number">3.</span> <span class="nav-text">第三章 关系数据库标准语言SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-SQL%E6%A6%82%E8%BF%B0"><span class="nav-number">3.2.</span> <span class="nav-text">3.1 SQL概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-SQL-%E7%9A%84%E4%BA%A7%E7%94%9F%E4%B8%8E%E5%8F%91%E5%B1%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.1.1  SQL 的产生与发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-SQL%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.1.2  SQL的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-SQL%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.1.3  SQL的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">三级结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">基本表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%82%A8%E5%AD%98%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.3.3.</span> <span class="nav-text">储存文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">3.2.3.4.</span> <span class="nav-text">视图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-S-C%E8%A1%A8"><span class="nav-number">3.3.</span> <span class="nav-text">3.2 S-C表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89"><span class="nav-number">3.4.</span> <span class="nav-text">3.3 数据定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.3.1 数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.3.2 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">创建一个模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B1"><span class="nav-number">3.4.2.1.1.</span> <span class="nav-text">[例1]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B2"><span class="nav-number">3.4.2.1.2.</span> <span class="nav-text">[例2]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B3"><span class="nav-number">3.4.2.1.3.</span> <span class="nav-text">[例3]</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.4.2.2.</span> <span class="nav-text">删除模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CASCADE-%E7%BA%A7%E8%81%94"><span class="nav-number">3.4.2.2.1.</span> <span class="nav-text">CASCADE(级联)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RESTRICT-%E9%99%90%E5%88%B6"><span class="nav-number">3.4.2.2.2.</span> <span class="nav-text">RESTRICT(限制)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-3-%E5%9F%BA%E6%9C%AC%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89%E3%80%81%E5%88%A0%E9%99%A4%E4%B8%8E%E4%BF%AE%E6%94%B9"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.3.3 基本表的定义、删除与修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="nav-number">3.4.3.1.</span> <span class="nav-text">定义基本表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B5"><span class="nav-number">3.4.3.1.1.</span> <span class="nav-text">[例5]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B6"><span class="nav-number">3.4.3.1.2.</span> <span class="nav-text">[例6]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B7"><span class="nav-number">3.4.3.1.3.</span> <span class="nav-text">[例7]</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="nav-number">3.4.3.2.</span> <span class="nav-text">修改基本表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B8"><span class="nav-number">3.4.3.2.1.</span> <span class="nav-text">[例8]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B9"><span class="nav-number">3.4.3.2.2.</span> <span class="nav-text">[例9]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B10"><span class="nav-number">3.4.3.2.3.</span> <span class="nav-text">[例10]</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="nav-number">3.4.3.3.</span> <span class="nav-text">删除基本表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B11"><span class="nav-number">3.4.3.3.1.</span> <span class="nav-text">[例11]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B12"><span class="nav-number">3.4.3.3.2.</span> <span class="nav-text">[例12]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-4-%E7%B4%A2%E5%BC%95%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="nav-number">3.4.4.</span> <span class="nav-text">3.3.4 索引的建立与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9B%AE%E7%9A%84"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">索引目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%96%B9%E6%B3%95"><span class="nav-number">3.4.4.2.</span> <span class="nav-text">关于方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">3.4.4.3.</span> <span class="nav-text">建立索引</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%8F%90%E7%A4%BA"><span class="nav-number">3.4.4.3.1.</span> <span class="nav-text">一些提示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-number">3.4.4.4.</span> <span class="nav-text">删除索引</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B13"><span class="nav-number">3.4.4.4.1.</span> <span class="nav-text">[例13]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B14"><span class="nav-number">3.4.4.4.2.</span> <span class="nav-text">[例14]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B15"><span class="nav-number">3.4.4.4.3.</span> <span class="nav-text">[例15]</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Hank</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">第一章 绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 数据库系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E5%9B%9B%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 四个基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A7%8D%E7%B1%BB"><span class="nav-number">1.1.1.1.2.</span> <span class="nav-text">种类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">1.1.1.1.3.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBMS"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">DBMS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBS"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">DBS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%8A%80%E6%9C%AF%E7%9A%84%E4%BA%A7%E7%94%9F%E5%92%8C%E5%8F%91%E5%B1%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 数据管理技术的产生和发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E7%89%B9%E7%82%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 特点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL"><span class="nav-number">3.</span> <span class="nav-text">第三章 关系数据库标准语言SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-SQL%E6%A6%82%E8%BF%B0"><span class="nav-number">3.2.</span> <span class="nav-text">3.1 SQL概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-SQL-%E7%9A%84%E4%BA%A7%E7%94%9F%E4%B8%8E%E5%8F%91%E5%B1%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.1.1  SQL 的产生与发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-SQL%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.1.2  SQL的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-SQL%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.1.3  SQL的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">三级结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">基本表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%82%A8%E5%AD%98%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.3.3.</span> <span class="nav-text">储存文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">3.2.3.4.</span> <span class="nav-text">视图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-S-C%E8%A1%A8"><span class="nav-number">3.3.</span> <span class="nav-text">3.2 S-C表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89"><span class="nav-number">3.4.</span> <span class="nav-text">3.3 数据定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.3.1 数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.3.2 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">创建一个模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B1"><span class="nav-number">3.4.2.1.1.</span> <span class="nav-text">[例1]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B2"><span class="nav-number">3.4.2.1.2.</span> <span class="nav-text">[例2]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B3"><span class="nav-number">3.4.2.1.3.</span> <span class="nav-text">[例3]</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.4.2.2.</span> <span class="nav-text">删除模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CASCADE-%E7%BA%A7%E8%81%94"><span class="nav-number">3.4.2.2.1.</span> <span class="nav-text">CASCADE(级联)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RESTRICT-%E9%99%90%E5%88%B6"><span class="nav-number">3.4.2.2.2.</span> <span class="nav-text">RESTRICT(限制)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-3-%E5%9F%BA%E6%9C%AC%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89%E3%80%81%E5%88%A0%E9%99%A4%E4%B8%8E%E4%BF%AE%E6%94%B9"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.3.3 基本表的定义、删除与修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="nav-number">3.4.3.1.</span> <span class="nav-text">定义基本表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B5"><span class="nav-number">3.4.3.1.1.</span> <span class="nav-text">[例5]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B6"><span class="nav-number">3.4.3.1.2.</span> <span class="nav-text">[例6]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B7"><span class="nav-number">3.4.3.1.3.</span> <span class="nav-text">[例7]</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="nav-number">3.4.3.2.</span> <span class="nav-text">修改基本表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B8"><span class="nav-number">3.4.3.2.1.</span> <span class="nav-text">[例8]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B9"><span class="nav-number">3.4.3.2.2.</span> <span class="nav-text">[例9]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B10"><span class="nav-number">3.4.3.2.3.</span> <span class="nav-text">[例10]</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="nav-number">3.4.3.3.</span> <span class="nav-text">删除基本表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B11"><span class="nav-number">3.4.3.3.1.</span> <span class="nav-text">[例11]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B12"><span class="nav-number">3.4.3.3.2.</span> <span class="nav-text">[例12]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-4-%E7%B4%A2%E5%BC%95%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="nav-number">3.4.4.</span> <span class="nav-text">3.3.4 索引的建立与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9B%AE%E7%9A%84"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">索引目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%96%B9%E6%B3%95"><span class="nav-number">3.4.4.2.</span> <span class="nav-text">关于方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%B4%A2%E5%BC%95"><span class="nav-number">3.4.4.3.</span> <span class="nav-text">建立索引</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%8F%90%E7%A4%BA"><span class="nav-number">3.4.4.3.1.</span> <span class="nav-text">一些提示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-number">3.4.4.4.</span> <span class="nav-text">删除索引</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B13"><span class="nav-number">3.4.4.4.1.</span> <span class="nav-text">[例13]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B14"><span class="nav-number">3.4.4.4.2.</span> <span class="nav-text">[例14]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B15"><span class="nav-number">3.4.4.4.3.</span> <span class="nav-text">[例15]</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/utils.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/header-shrink.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/back2top.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/toggle-theme.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/code-block.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/main.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

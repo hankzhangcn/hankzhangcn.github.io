@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Hank">
+    
+    <title>
+        
+            硬币问题 |
+        
+        电瀚
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"hankzhang.cn","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"电瀚","author":"Hank","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"Archives":"/archives","Links":"/links","About":"/about","Changelog":"/changelog"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/hankzhangcn","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"mailto://whoishank@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"category":false,"tag":false,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null},"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"https://hankzhang-comment.netlify.app/.netlify/functions/twikoo","region":null,"version":"1.6.22"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"unpkg"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"style":{"primary_color":"#eccc68","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","first_screen":{"enable":true,"background_img":"https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/IFS国金中心.6vtxrc499gw0.jpg","description":"专注电子信息 的 电瀚","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"home_article":{"category":{"enable":false,"limit":3},"tag":{"enable":false,"limit":5}},"root":"","version":"4.0.6"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               电瀚
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class=""
+                           href="/"
+                        >首页</a>
+                    </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >归档</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >友链</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >关于</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >更新日志</a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            <li class="drawer-menu-item flex-center">
+                <a class=""
+                   href="/"
+                >首页</a>
+            </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog"
+                    >更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+                <div class="post-content-top border-box"
+                     style="height: 13.8rem"
+                >
+                    <div class="cover-post-title">
+                        硬币问题
+                    </div>
+                    <img class="post-cover" src="https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/硬币问题_封面.173pkb8el31c.jpg"
+                         onerror="this.style.display='none'"
+                    >
+                </div>
+            
+
+            <div class="post-content-bottom border-box has-cover">
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Hank</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-11-22 19:30</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Nov 24 2020 18:05:00 GMT+0000">2020-11-24 18:05</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BD%9C%E4%B8%9A/">作业</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <!-- # 背景音乐-Floodgate
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1484013294&auto=1&height=66"></iframe> -->
+
+<h1 id="实验四-贪心算法"><a href="#实验四-贪心算法" class="headerlink" title="实验四  贪心算法"></a>实验四  贪心算法</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><h3 id="一．实验目的"><a href="#一．实验目的" class="headerlink" title="一．实验目的"></a>一．实验目的</h3><p>掌握贪心算法的设计与分析步骤以及算法的具体实现。</p>
+<h3 id="二．实验要求"><a href="#二．实验要求" class="headerlink" title="二．实验要求"></a>二．实验要求</h3><p>实验时间：2学时，对于给定的问题描述，生成实验报告。</p>
+<h3 id="三．实验内容"><a href="#三．实验内容" class="headerlink" title="三．实验内容"></a>三．实验内容</h3><p>问题描述：设有$n$种零钱， 重量分别为$w_{1},w_{2},\dots,w_{n}$,价值分别为$1, v_{2},\dots,v_{n}$, 其中$v_{1} &lt; v_{2} &lt; \dots &lt; v_{n}$ 需要付的总钱数是$Y$。假设币值和钱数都为正整数。问：如何付钱使所付钱的总重最轻?  </p>
+<ol>
+<li>使用动态规划算法解决问题，给出分析过程。</li>
+<li>使用贪心算法解决问题，给出分析过程。</li>
+<li>给出算法的具体实现过程（源码及其详细注释）。</li>
+<li>给出算法的运行结果。针对不同的输入，分析贪心法和动态规划法得到的解是否相同，如果不同，给出理由。</li>
+</ol>
+<hr>
+<h1 id="形式化问题"><a href="#形式化问题" class="headerlink" title="形式化问题"></a>形式化问题</h1><p>现有集合 $W&#x3D;{w_{1},w_{2},\dots,w_{n}},  V&#x3D;{v_{1}, v_{2},\dots,v_{n}}$ ，且满足 $v_{1} &lt; v_{2} &lt; \dots &lt; v_{n}$ .对于给定的 $Y$ ，找出合适的 $X&#x3D;{x_{1},x_{2},\dots,x_{n}}\space,x_{i}\in n$ ,满足 $Y&#x3D;\sum_{i&#x3D;1}^{n}v_{i}x_{i}$ ，求满足条件的 $X$ 中，同时满足 $min{\sum_{i&#x3D;1}^{n}w_{i}x_{i}}$ 的集合结果.</p>
+<h1 id="动态规划算法"><a href="#动态规划算法" class="headerlink" title="动态规划算法"></a>动态规划算法</h1><p>这属于整数规划问题，动态规划算法可以得到最优解。</p>
+<p>解决DP问题，最重要的是要找出子问题。所以从这里开始。</p>
+<p>此问题基于初始的硬币问题，下面给出题面</p>
+<blockquote>
+<p>假设有 1 元，3 元，5 元的硬币若干（无限），现在需要凑出 11 元，问如何组合才能使硬币的数量最少？</p>
+</blockquote>
+<p>初始的硬币问题相当于此问题中的特例，要解决题目中的问题，不妨先从这个特例开始：</p>
+<h2 id="特例"><a href="#特例" class="headerlink" title="特例"></a>特例</h2><p>现在给定一个$W&#x3D;{1,1,1}$ ， $V&#x3D;{1,5,10}$ ， $Y&#x3D;15$ ,求 $X$ 的 $min{\sum_{i&#x3D;1}^{n}w_{i}x_{i}}$ （注意，这里求的是最小个数sum，而不是支付方式$X$）.</p>
+<p>在这里我们将硬币看做等重量，即1，此处映射为对应面额硬币的个数。</p>
+<p>我们给定一个二维数组<code>F[k][y]</code>，表示当前考虑 $1,2,\dots,k$ 的情况下，对于当前金额 $y$ 所需的最小重量（硬币数）。</p>
+<p>我们从头开始，很显然，对于<code>F[1][]</code>，即只考虑 1 元硬币的情况，对于给定的当前 v 的最小值。</p>
+<p>将 $v&#x3D;0$ 置为0.接下来考虑要付 1 元钱的情况，这时只可能有 在原先0元的基础上付 1 元硬币。即 $F[1][1]&#x3D;F[1][0]+w_{1}x_{1}$.</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td style="background-color: yellow">1</td>
+        <td style="background-color: yellow">2</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</div>
+
+<p>以此类推，直到 $y&#x3D;Y$.</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td  style="background-color: yellow">14</td>
+        <td style="background-color: orange">15</td>
+    </tr>
+</table>
+</div>
+
+<p>接下来我们考虑 $k&#x3D;2$ ，即有1元和5元硬币的情况。在 $y &lt; 5$ 的情况下，不能用5元硬币，所以此时直接等于其上面的值。</p>
+<p>直到 $n&#x3D;5$ 可以看到此时可以拿一个5元的硬币了。我们直接从 <code>F[2][0],F[1][5]</code> 中查找最小值，然后加上5元的重量1.</p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><blockquote>
+<p>有人还会考虑了<code>F[1][0]</code>的情况，但事实上， <strong>由于最优子结构的性质，在考虑<code>F[2][0]</code>时已经考虑过<code>F[1][0]</code>，所以不用再考虑，以此类推，在考虑<code>n=6</code>时，<code>F[0][1]</code>不用考虑，等等等等</strong></p>
+</blockquote>
+<h3 id="继续分析"><a href="#继续分析" class="headerlink" title="继续分析"></a>继续分析</h3><div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td style="background-color: yellow">5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[2][]</td>
+        <td style="background-color: yellow">0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td style="background-color: orange">1</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+    </tr>
+</table>
+</div>
+
+<p>同样，对于10元，15元也是同样的处理方法。</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td style="background-color: yellow">15</td>
+    </tr>
+    <tr>
+        <td>F[2][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td style="background-color: yellow">2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td style="background-color: orange">3</td>
+    </tr>
+</table>
+</div>
+
+<p>以此类推，填完表格</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[2][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td style="background-color: yellow">3</td>
+    </tr>
+    <tr>
+        <td>F[3][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td style="background-color: yellow">1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td style="background-color: orange">2</td>
+    </tr>
+</table>
+</div>
+
+
+<h2 id="状态转移方程"><a href="#状态转移方程" class="headerlink" title="状态转移方程"></a>状态转移方程</h2><p>设 $F_{k}(y)$ 表示用前 $k$ 种零钱，总钱数为 $y$ 的最小重量。</p>
+<p>$$\left{<br>\begin{matrix}F_{k+1}(y)&#x3D;\min<br>    \begin{Bmatrix}F_{k}(y)<br>        \F_{k+1}(y-v_{k+1})+w_{k+1}<br>    \end{Bmatrix}<br>\F_{1}(0)&#x3D;0<br>\end{matrix}\right.$$</p>
+<p>$$k&#x3D;1,2,\dots,n-1,y&#x3D;0,1,\dots,Y$$</p>
+<blockquote>
+<p>PPT上给出了另一种状态转移方程，但我倾向于用上方的二选一的方式表达。</p>
+</blockquote>
+<blockquote>
+<p>下面是PPT给出的状态转移方程。<br>$$\left{\begin{matrix}f_{k+1}(y)&#x3D;\min_{0 \le x_{k+1} \le \left \lfloor \frac{y}{v_{k+1}}  \right \rfloor }{F_{k}(y-v_{k+1}x_{k+1})+w_{k+1}x_{k+1}}<br> \f_{1}(y)&#x3D;w_{1}\left \lfloor \frac{y}{v_{1}}  \right \rfloor &#x3D;w_{1}y<br>\end{matrix}\right.$$<br>$$k&#x3D;1,2,\dots,n-1,y&#x3D;0,1,\dots,Y$$</p>
+</blockquote>
+<h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><p>此算法常数级填写了一张二维表格。时间复杂度为<br>$$O(nY)$$</p>
+<p>$n$ 为钱的种数，$Y$ 为需要给付的钱数。</p>
+<p>若需要具体的$X$集合，只需同样<code>[n][Y]</code>大小的数组（或者一个<code>[2][Y]</code>的数组进行滚动），用来存取其选择的单元格，然后通过 $O(n+Y)$ 回溯计可获得 $X$ 的集合。</p>
+<hr>
+<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><p>用贪心算法解决此问题，只需要保证每次选择都是当前最好的选择。</p>
+<p>针对当前问题，为了能够得到最小的总重量</p>
+<p>我们就会优先选择单位重量下价值较高的硬币。直到不能再用，再选单位价值次之的。由于题干说明一定有价值为1的硬币，所以一定能保证付到Y价值。</p>
+<h2 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h2><p>此算法需要将硬币按“单位价值比”排序，最快需要 $O(n \log n)$ 时间，此后选择只需要 $O(n)$ 时间。总的时间复杂度是<br>$$O(n \log n)$$</p>
+<hr>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><div class="codediv">
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 1000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXY 1000</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">coin</span>&#123;</span><br><span class="line">	<span class="type">int</span> wei,val;</span><br><span class="line">	<span class="type">double</span> vpw;</span><br><span class="line">&#125;;<span class="comment">//为排序创建结构体 </span></span><br><span class="line">coin c[MAXN+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> n,Y;<span class="comment">//硬币种数,总钱数 </span></span><br><span class="line"><span class="type">int</span> v[MAXN],w[MAXN],vpw[MAXN];</span><br><span class="line"><span class="type">int</span> F[MAXN][MAXY];</span><br><span class="line"><span class="type">int</span> back[MAXN];</span><br><span class="line"><span class="type">int</span> back2[MAXN];</span><br><span class="line"><span class="comment">//void solve(int )&#123;</span></span><br><span class="line"><span class="comment">//    int ans=0;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//    for(int i=5; i&gt;=0; i--)&#123;</span></span><br><span class="line"><span class="comment">//        int t=min(A/V[i],C[i]);  //使用硬币i的枚数</span></span><br><span class="line"><span class="comment">//        A-=t*V[i];</span></span><br><span class="line"><span class="comment">//        ans+=t;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//    printf(&quot;%d\n&quot;,ans);</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//回溯 </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">backtrace</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(F[x][y]==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(F[x][y]==F[x<span class="number">-1</span>][y])</span><br><span class="line">	&#123;</span><br><span class="line">        <span class="built_in">backtrace</span>(x<span class="number">-1</span>,y);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(y&gt;=v[x])&#123;</span><br><span class="line">        <span class="keyword">if</span>(F[x][y]==F[x<span class="number">-1</span>][y-v[x]]+w[x])</span><br><span class="line">		&#123;</span><br><span class="line">            back[x]++;</span><br><span class="line">            <span class="built_in">backtrace</span>(x<span class="number">-1</span>,y-v[x]);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(F[x][y]==F[x][y-v[x]]+w[x])</span><br><span class="line">		&#123;</span><br><span class="line">            back[x]++;</span><br><span class="line">            <span class="built_in">backtrace</span>(x,y-v[x]);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dp</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	F[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=Y;j++)<span class="comment">//初始化1元面值的一行 </span></span><br><span class="line">	&#123;</span><br><span class="line">		F[<span class="number">1</span>][j]=F[<span class="number">1</span>][j<span class="number">-1</span>]+w[<span class="number">1</span>]; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=Y;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			F[i][j]=F[i<span class="number">-1</span>][j];<span class="comment">//先与上一行同价值 </span></span><br><span class="line">			<span class="keyword">if</span>(j&gt;=v[i])</span><br><span class="line">			&#123;</span><br><span class="line">				F[i][j]=<span class="built_in">min</span>(F[i][j],(F[i][j-v[i]]+w[i]));<span class="comment">//请看状态转移方程 </span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	输出表格 </span></span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;i++)</span></span><br><span class="line"><span class="comment">//	&#123;</span></span><br><span class="line"><span class="comment">//		for(int j=0;j&lt;=Y;j++)</span></span><br><span class="line"><span class="comment">//			printf(&quot;%d\t&quot;,F[i][j]);</span></span><br><span class="line"><span class="comment">//		printf(&quot;\n&quot;);</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;最小重量为 %d \n&quot;</span>,F[n][Y]);</span><br><span class="line">	<span class="built_in">backtrace</span>(n,Y);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;硬币面额 %d\t元的，拿 %d 个\n&quot;</span>,v[i],back[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">rule</span><span class="params">(coin x,coin y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x.vpw&lt;y.vpw;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//贪心算法实现</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">greedy</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		c[i].val=v[i];</span><br><span class="line">		c[i].wei=w[i];</span><br><span class="line">		c[i].vpw=vpw[i];</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="built_in">sort</span>(c+<span class="number">1</span>,c+n+<span class="number">1</span>,rule);</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>,restVal=Y;</span><br><span class="line">    <span class="built_in">memset</span>(back2,<span class="number">0</span>,<span class="built_in">sizeof</span>(back2));</span><br><span class="line">    <span class="comment">//优先选择价值高的硬币并记录选择</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        back2[i]=restVal/c[i].val;</span><br><span class="line">        ans+=back2[i]*c[i].wei;</span><br><span class="line">        restVal-=back2[i]*c[i].val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//结果输出</span></span><br><span class="line">    <span class="keyword">if</span>(restVal==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;总重量:%d\n&quot;</span>,ans);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;硬币面额 %d\t元的，拿 %d 个\n&quot;</span>,c[i].val,back2[i]);</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;贪心算法无法对此题求解\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">initialization</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;硬币种数 n\n&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;总价值 Y\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;Y);</span><br><span class="line">    </span><br><span class="line">    v[<span class="number">1</span>]=<span class="number">1</span>; </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;面值为 1 的硬币重量\n&quot;</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;w[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">	    <span class="built_in">printf</span>(<span class="string">&quot;第 %d 个硬币的价值与重量\n&quot;</span>,i);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;v[i],&amp;w[i]);</span><br><span class="line">        vpw[i]=<span class="number">1.0</span>*v[i]/w[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="built_in">initialization</span>();<span class="comment">//初始化：读入数据，处理单位价值 </span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;--------D P 算法---------\n&quot;</span>);</span><br><span class="line">	<span class="built_in">dp</span>();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;--------贪心算法---------\n&quot;</span>);</span><br><span class="line">	<span class="built_in">greedy</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div>
+
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img   src="https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/%E7%A1%AC%E5%B8%81%E9%97%AE%E9%A2%98_%E7%BB%93%E6%9E%9C%E7%9B%B8%E5%90%8C%E7%9A%84%E6%83%85%E5%86%B5.49sudifo6lu0.png"  alt="硬币问题_结果相同的情况"></p>
+<p><img   src="https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/%E7%A1%AC%E5%B8%81%E9%97%AE%E9%A2%98_%E7%BB%93%E6%9E%9C%E4%B8%8D%E4%B8%80%E7%9A%84%E6%83%85%E5%86%B5.4an2lkyr4uo0.png"  alt="硬币问题_结果不一的情况"><br>结果不一，为什么？</p>
+<h2 id="贪心局限-看看就好"><a href="#贪心局限-看看就好" class="headerlink" title="贪心局限 (看看就好)"></a>贪心局限 (看看就好)</h2><p>我们不妨设这样一串硬币属性：</p>
+<p>$$\frac{v_1}{w_1}\le\frac{v_2}{w_2}\le\dots\le\frac{v_n}{w_n}$$</p>
+<p>使用前 $k$ 种零钱，总钱数为 $y$。</p>
+<p>贪心法的总重为 $G_{k}(y)$，则有如下递推方程</p>
+<p>$$\begin{array}{l}<br>G_{k+1}(y)&#x3D;w_{k+1}\left\lfloor\frac{y}{v_{k+1}}\right\rfloor+G_{k}\left(y \bmod v_{k+1}\right) \quad k1 \<br>G_{1}(y)&#x3D;w_{1}\left\lfloor\frac{y}{v_{1}}\right\rfloor&#x3D;w_{1} y<br>\end{array}$$</p>
+<h2 id="n-1-2"><a href="#n-1-2" class="headerlink" title="n&#x3D;1, 2"></a>n&#x3D;1, 2</h2><p>$n &#x3D; 1$ 只有一种零钱，$F_{1}(y) &#x3D; G_{1}(y) , F_{2}(y) &#x3D; G_{2}(y)$</p>
+<p>$n &#x3D; 2$,  使用价值大的钱越多($x_{2}$越大)，得到的解越好</p>
+<p>$F_{2}(y)&#x3D;\min <em>{0 \leq x</em>{2} \leq\left\lfloor y &#x2F; v_{2}\right\rfloor}\left{F_{1}\left(y-v_{2} x_{2}\right)+w_{2} x_{2}\right}$</p>
+<p>$$\begin{array}{l}<br>{\left[F_{1}\left(y-v_{2} x_{2}\right)+w_{2} x_{2}\right]} -\left[F_{1}\left(y-v_{2}\left(x_{2}+\delta\right)\right)+w_{2}\left(x_{2}+\delta\right)\right] \<br>&#x3D;\left[w_{1}\left(y-v_{2} x_{2}\right)+w_{2} x_{2}\right]-\left[w_{1}\left(y-v_{2} x_{2}-v_{2} \delta\right)+w_{2} x_{2}+w_{2} \delta\right] \<br>&#x3D;w_{1} v_{2} \delta-w_{2} \delta&#x3D;\delta\left(w_{1} v_{2}-w_{2}\right) \geq 0<br>\end{array}$$</p>
+<p>说明$w_{1} ≥ \frac{w_{2}}{v}$，即多使用 $\delta$ 枚第二种硬币的重量更小。</p>
+<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>贪心算法为什么叫做贪心，是因为其每次都从<strong>整个局面</strong>出发选看上去<strong>对现在最好</strong>的选择。但事实告诉我们，这样的选择反而有可能会对局面不利。<br>DP从<strong>子问题</strong>出发选<strong>对当前子问题最好</strong>的选择，符合最优子结构的条件，最终能求出最好的解决。<br>贪心，真不是好的解决方案呢。<br>不如着眼现在，做好现在的事情；而不是好高骛远，贪图捷径。<br>嗯……算法，值得思考，值得发散……</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E4%BD%9C%E4%B8%9A/">作业</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/1cddbeacf049.html"
+                                   title="节选诗一首"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">节选诗一首</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/5c1dc08781ad.html"
+                                   title="hexo-generator-feed 的 atom 参数设置"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">hexo-generator-feed 的 atom 参数设置</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="twikoo-container">
+        <div id="twikoo-comment"></div>
+        <script 
+                src="//unpkg.com/twikoo@1.6.22/dist/twikoo.all.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initTwikoo = () => {
+            if (window?.twikoo) {
+              twikoo.init({
+                el: '#twikoo-comment',
+                envId: 'https://hankzhang-comment.netlify.app/.netlify/functions/twikoo',
+                region: '',
+                lang: 'zh-CN' || 'zh-CN'
+              })
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initTwikoo()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initTwikoo()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initTwikoo)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%9B%9B-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">实验四  贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%EF%BC%8E%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">一．实验目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%EF%BC%8E%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="nav-number">1.1.2.</span> <span class="nav-text">二．实验要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%EF%BC%8E%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">三．实验内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E5%8C%96%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">形式化问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">动态规划算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E4%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">特例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA"><span class="nav-number">3.1.1.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E7%BB%AD%E5%88%86%E6%9E%90"><span class="nav-number">3.1.2.</span> <span class="nav-text">继续分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">状态转移方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">3.3.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6-1"><span class="nav-number">4.1.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">6.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E5%B1%80%E9%99%90-%E7%9C%8B%E7%9C%8B%E5%B0%B1%E5%A5%BD"><span class="nav-number">6.1.</span> <span class="nav-text">贪心局限 (看看就好)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-1-2"><span class="nav-number">6.2.</span> <span class="nav-text">n&#x3D;1, 2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">心得体会</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Hank</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%9B%9B-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">实验四  贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%EF%BC%8E%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">一．实验目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%EF%BC%8E%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="nav-number">1.1.2.</span> <span class="nav-text">二．实验要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%EF%BC%8E%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">三．实验内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E5%8C%96%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">形式化问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">动态规划算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E4%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">特例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA"><span class="nav-number">3.1.1.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E7%BB%AD%E5%88%86%E6%9E%90"><span class="nav-number">3.1.2.</span> <span class="nav-text">继续分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">状态转移方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">3.3.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6-1"><span class="nav-number">4.1.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">6.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E5%B1%80%E9%99%90-%E7%9C%8B%E7%9C%8B%E5%B0%B1%E5%A5%BD"><span class="nav-number">6.1.</span> <span class="nav-text">贪心局限 (看看就好)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-1-2"><span class="nav-number">6.2.</span> <span class="nav-text">n&#x3D;1, 2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">心得体会</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/utils.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/header-shrink.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/back2top.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/toggle-theme.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/code-block.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/main.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

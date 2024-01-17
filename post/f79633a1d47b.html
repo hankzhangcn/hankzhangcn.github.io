@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Hank">
+    
+    <title>
+        
+            算法设计与分析-总结 |
+        
+        电瀚
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"hankzhang.cn","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"电瀚","author":"Hank","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"Archives":"/archives","Links":"/links","About":"/about","Changelog":"/changelog"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/hankzhangcn","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"mailto://whoishank@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"category":false,"tag":false,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null},"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"https://hankzhang-comment.netlify.app/.netlify/functions/twikoo","region":null,"version":"1.6.22"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"unpkg"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"style":{"primary_color":"#eccc68","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","first_screen":{"enable":true,"background_img":"https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/IFS国金中心.6vtxrc499gw0.jpg","description":"专注电子信息 的 电瀚","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"home_article":{"category":{"enable":false,"limit":3},"tag":{"enable":false,"limit":5}},"root":"","version":"4.0.6"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               电瀚
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class=""
+                           href="/"
+                        >首页</a>
+                    </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >归档</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >友链</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >关于</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >更新日志</a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            <li class="drawer-menu-item flex-center">
+                <a class=""
+                   href="/"
+                >首页</a>
+            </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog"
+                    >更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+                <div class="post-content-top border-box"
+                     style="height: 13.8rem"
+                >
+                    <div class="cover-post-title">
+                        算法设计与分析-总结
+                    </div>
+                    <img class="post-cover" src="https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/算法总结_封面.5ykwsh45ccc0.jpg"
+                         onerror="this.style.display='none'"
+                    >
+                </div>
+            
+
+            <div class="post-content-bottom border-box has-cover">
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Hank</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-12-03 00:00</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sun Dec 20 2020 00:00:00 GMT+0000">2020-12-20 00:00</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <blockquote>
+<p>文章上次更新于<code>2020年12月21日</code>。</p>
+</blockquote>
+<!-- > 文章非常长，toc生成的超长目录对性能影响非常大，以至于最后无法滚动页面，因此本文侧边没有目录。 -->
+
+<blockquote>
+<p>本总结并没有发挥事实作用。</p>
+</blockquote>
+<h1 id="我们考什么"><a href="#我们考什么" class="headerlink" title="我们考什么"></a>我们考什么</h1><h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ul>
+<li>五种算法</li>
+<li>几个点</li>
+</ul>
+<h2 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h2><h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><p>2*10&#x3D;20<br>都是基本概念，包含：</p>
+<ul>
+<li>五种基本算法</li>
+<li>以及他们的复杂度</li>
+</ul>
+<h3 id="填空"><a href="#填空" class="headerlink" title="填空"></a>填空</h3><p>2*10&#x3D;20</p>
+<ul>
+<li>同上</li>
+</ul>
+<h3 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h3><p>7*5&#x3D;35</p>
+<ul>
+<li>没讲</li>
+</ul>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>25*1</p>
+<h4 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h4><ul>
+<li>建模</li>
+<li>输入输出的约束条件</li>
+<li>贪心局限</li>
+<li>贪心实现</li>
+</ul>
+<h1 id="五种算法"><a href="#五种算法" class="headerlink" title="五种算法"></a>五种算法</h1><ul>
+<li>递归与分治法</li>
+<li>DP法</li>
+<li>贪心法</li>
+<li>回溯法</li>
+<li>分支界限法</li>
+</ul>
+<h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><h2 id="函数渐进的界"><a href="#函数渐进的界" class="headerlink" title="函数渐进的界"></a>函数渐进的界</h2><h3 id="O"><a href="#O" class="headerlink" title="$O$"></a>$O$</h3><p>就是上界</p>
+<p>定义： 设 $f$ 和 $g$ 是定义域为自然数集 $N$ 上的函数。<br>若**存在正数 $c$ 和 $n_0$**，使得对一切 $n  \ge n_0$ 有 $0 \le f(n) \le c \cdot g(n)$ 成立，则称 $f(n)$ 的渐进的上界是 $g(n)$ ，记作 $f(n) &#x3D; O(g(n))$ 。</p>
+<p>$O(g(n))$表示的函数集合的函数是<strong>阶数</strong>不超过$g(n)$的函数。</p>
+<blockquote>
+<p>例如：$f(n)&#x3D;2\cdot n+2&#x3D;O(n)$<br>证明：当$n&gt;3$的时候，$2\cdot n +2&lt;3n$，所以可选$n_0&#x3D;3$,$c&#x3D;3$，则$n&gt;n_0$的时候，$f(n) &lt; c\cdot (n)$，所以$f(n)&#x3D;O(n)$。<br>现在再证明$f(n)&#x3D;2n+2&#x3D;O(n^2)$<br>证明：当$n&gt;2$的时候，$2n+2&lt;2n^2$，所以可选$n_0&#x3D;2$,$c&#x3D;2$,则$n&gt;n_0$的时候，$f(n)&lt; c\cdot (n^2)$，所以$f(n)&#x3D;O(n^2)$。<br>同理可证$f(n)&#x3D;O(n^a)$，$a&gt;1$</p>
+</blockquote>
+<h3 id="Omega"><a href="#Omega" class="headerlink" title="$\Omega$"></a>$\Omega$</h3><p>就是下界</p>
+<p>定义： 设 $f$ 和 $g$ 是定义域为自然数集 $N$ 上的函数。<br>若**存在正数 $c$ 和 $n_0$**，使得对一切 $n  \ge n_0$ 有 $0 \le c \cdot g(n)\le f(n) $ 成立，则称 $f(n)$ 的渐进的下界是 $g(n)$ ，记作 $f(n) &#x3D; \Omega (g(n))$ 。</p>
+<blockquote>
+<p>例如：$f(n)&#x3D;2n^2+3n+2&#x3D;\Omega (n^2)$<br>证明：当$n&gt;4$的时候，$2n^2+3n+2&gt;n^2$，所以可选$n_0&#x3D;4$,$c&#x3D;1$,则$n&gt;n0$的时候，$f(n)&gt;c\cdot (n^2)$，所以$f(n)&#x3D;\Omega (n^2)$。<br>同理可证$f(n)&#x3D;\Omega (n)$,$f(n)&#x3D;\Omega (1)$</p>
+</blockquote>
+<h3 id="Theta"><a href="#Theta" class="headerlink" title="$\Theta$"></a>$\Theta$</h3><p>$\Theta$记号介于大$O$记号和$\Omega$记号之间。他表示，存在正常数$c_1$,$c_2$,$n_0$，当$n&gt;n0$的时候，$c_1g(n)≤f(n)≤c_2g(n)$，则$f(n)&#x3D;\Theta (g(n))$。 他表示所有阶数与$g(n)$相同的函数集合。</p>
+<blockquote>
+<p>例如： $f (n) &#x3D; n^2 + n$，$g(n) &#x3D; 100n^2$，那么有$f (n)&#x3D;\Theta (g(n))$</p>
+</blockquote>
+<h3 id="o-omega"><a href="#o-omega" class="headerlink" title="$o$ &#x2F; $\omega$"></a>$o$ &#x2F; $\omega$</h3><p>$f(n)&#x3D;o(g(n))$当且仅当$f(n)&#x3D;O(g(n))$且$f(n)≠\Omega (g(n))$。也就是说小o记号可以表示时间复杂度的上界，但是<strong>一定不等于</strong>下界。<br>$\Omega$则相反，$f(n)&#x3D;\Omega (g(n))$当且仅当$f(n)&#x3D;\Omega (g(n))$且$f(n)≠O(g(n))$。也就是说小$o$记号可以表示时间复杂度的下界，但是一<strong>定不等于</strong>上界。</p>
+<h3 id="几个渐进界的定理"><a href="#几个渐进界的定理" class="headerlink" title="几个渐进界的定理"></a>几个渐进界的定理</h3><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h4><p>设 $f,g$ 是定义域为自然数集合的函数.</p>
+<ol>
+<li>如果$\lim\limits_{n→+∞}  \frac{f(n)}{g(n)}$  存在，并且等于某个常数 $c&gt;0$ ，那么$f(n)&#x3D;Θ(g(n))$.</li>
+<li>如果$\lim\limits_{n→+∞}  \frac{f(n)}{g(n)} &#x3D;0$，那么$f(n)&#x3D;o(g(n))$.</li>
+<li>如果$\lim\limits_{n→+∞}  \frac{f(n)}{g(n)} &#x3D;+∞$，那么$f(n)&#x3D;\Omega (g(n))$.</li>
+</ol>
+<h4 id="定理2"><a href="#定理2" class="headerlink" title="定理2"></a>定理2</h4><p>函数的阶之间的关系具有传递性</p>
+<p>设函数 $f,g,h$ 的定义域为自然数集合，</p>
+<ol>
+<li>如果 $f&#x3D;O(g)$ 且 $g&#x3D;O(h)$，那么 $f&#x3D;O(h)$.</li>
+<li>如果 $f&#x3D;\Omega (g)$ 且 $g&#x3D;\Omega (h)$，那么 $f&#x3D;\Omega (h)$.</li>
+<li>如果 $f&#x3D;Θ(g)$ 且 $g&#x3D;Θ(h)$，那么 $f&#x3D;Θ(h)$.</li>
+</ol>
+<h4 id="定理3"><a href="#定理3" class="headerlink" title="定理3"></a>定理3</h4><p>假设函数 $f,g$ 的定义域为自然数集，若对某个其它函数 $h$, 有 $f&#x3D;O(h)$ 和 $g&#x3D;O(h)$，那么$f+g&#x3D;O(h)$</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><h5 id="估计函数的阶的方法："><a href="#估计函数的阶的方法：" class="headerlink" title="估计函数的阶的方法："></a>估计函数的阶的方法：</h5><ul>
+<li>计算极限</li>
+<li>阶具有传递性</li>
+</ul>
+<h5 id="几类重要的函数"><a href="#几类重要的函数" class="headerlink" title="几类重要的函数"></a>几类重要的函数</h5><p>对数函数$\log <em>ax$的阶 &lt; 幂函数$x^a$的阶<br>多项式函数$f(x)&#x3D;a_n·x^n+a</em>{n-1}·x^{(n-1)}+…+a_2·x^2+a_1·x+a_0$的阶 &lt; 指数函数$a^x$的阶.	</p>
+<ul>
+<li>指数</li>
+<li>多项式</li>
+<li>对数</li>
+</ul>
+<h2 id="递推方程的求法"><a href="#递推方程的求法" class="headerlink" title="递推方程的求法"></a>递推方程的求法</h2><p>写出递推方程，如下（第N个基于n-i还是倍数个），g(n)是划分时间，然后让你给出通项公式。</p>
+<h3 id="第一类"><a href="#第一类" class="headerlink" title="第一类"></a>第一类</h3><p>$f(\boldsymbol{n})&#x3D;\sum_{i&#x3D;1}^{k} \boldsymbol{a}_{i} \boldsymbol{f}(\boldsymbol{n}-\boldsymbol{i})+\boldsymbol{g}(\boldsymbol{n})$</p>
+<h4 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h4><h5 id="直接"><a href="#直接" class="headerlink" title="直接"></a>直接</h5><ul>
+<li>插入排序最坏情况下时间分析<ul>
+<li>直接将其带入，一层层求解计可</li>
+</ul>
+</li>
+</ul>
+<h5 id="换元"><a href="#换元" class="headerlink" title="换元"></a>换元</h5><ul>
+<li>二分归并<ul>
+<li>一个思路就是将倍数变成指数函数。譬如<br>$\left{\begin{array}{l}<br>W(n)&#x3D;2 W(n &#x2F; 2)+n-1 \<br>W(1)&#x3D;0<br>\end{array}\right.$<br>令$n&#x3D;2^k$化为<br>$W(2^k) &#x3D; 2W(2^{k-1}) + 2^k  - 1$<br>$W(0) &#x3D; 0$</li>
+</ul>
+</li>
+</ul>
+<h5 id="差消"><a href="#差消" class="headerlink" title="差消"></a>差消</h5><pre><code>不考
+</code></pre>
+<h4 id="尝试法"><a href="#尝试法" class="headerlink" title="尝试法"></a>尝试法</h4><p>______________</p>
+<h3 id="第二类"><a href="#第二类" class="headerlink" title="第二类"></a>第二类</h3><p>$f(n)&#x3D;a f\left(\frac{n}{b}\right)+d(n)$<br>迭代法<br>递归树<br>主定理</p>
+<h3 id="主定理"><a href="#主定理" class="headerlink" title="主定理"></a>主定理</h3><p>$T(n) &#x3D; a T( \frac{n}{b}) + f(n)$</p>
+<ol>
+<li>若 $f(n)&#x3D;O(n^{\log _b a-\varepsilon })$,$\varepsilon &gt;0$，那么$T(n)&#x3D;\Theta (n^{\log _b a})$</li>
+<li>若 $f(n)&#x3D;\Theta (n^{\log _b a})$，那么$T(n)&#x3D;\Theta (n^{\log _b a}\log n)$</li>
+<li>若 $f(n)&#x3D;\Omega (n^{\log _b a+\varepsilon })$,$\varepsilon &gt;0$，且对某个常数$c&gt;1$，和所有充分大的$n$有$af(\frac {n}{b})\le cf(n)$那么$T(n)&#x3D;\Theta (f(n))$</li>
+</ol>
+<hr>
+<h1 id="考到的问题"><a href="#考到的问题" class="headerlink" title="考到的问题"></a>考到的问题</h1><h2 id="矩阵链相乘"><a href="#矩阵链相乘" class="headerlink" title="矩阵链相乘"></a>矩阵链相乘</h2><h3 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h3><h4 id="子问题"><a href="#子问题" class="headerlink" title="子问题"></a>子问题</h4><p>$A_{i \dots j}$ ：表示矩阵链$A_iA_{i+1}\dots A_j$ 的乘积结果，边界 i, j<br>输入向量：$&lt; P_{i-1}, Pi, … , P_j &gt;$<br>其最好划分的运算次数：$m[i, j]$</p>
+<h4 id="递推方程"><a href="#递推方程" class="headerlink" title="递推方程"></a>递推方程</h4><p>书上P48</p>
+<h2 id="零钱"><a href="#零钱" class="headerlink" title="零钱"></a>零钱</h2><h3 id="形式化问题"><a href="#形式化问题" class="headerlink" title="形式化问题"></a>形式化问题</h3><p>现有集合 $W&#x3D;{w_{1},w_{2},\dots,w_{n}},  V&#x3D;{v_{1}, v_{2},\dots,v_{n}}$ ，且满足 $v_{1} &lt; v_{2} &lt; \dots &lt; v_{n}$ .对于给定的 $Y$ ，找出合适的 $X&#x3D;{x_{1},x_{2},\dots,x_{n}}\space,x_{i}\in n$ ,满足 $Y&#x3D;\sum_{i&#x3D;1}^{n}v_{i}x_{i}$ ，求满足条件的 $X$ 中，同时满足 $min{\sum_{i&#x3D;1}^{n}w_{i}x_{i}}$ 的集合结果.</p>
+<h3 id="DP-1"><a href="#DP-1" class="headerlink" title="DP"></a>DP</h3><p>这属于整数规划问题，动态规划算法可以得到最优解。</p>
+<p>解决DP问题，最重要的是要找出子问题。所以从这里开始。</p>
+<p>此问题基于初始的硬币问题，下面给出题面</p>
+<blockquote>
+<p>假设有 1 元，3 元，5 元的硬币若干（无限），现在需要凑出 11 元，问如何组合才能使硬币的数量最少？</p>
+</blockquote>
+<p>初始的硬币问题相当于此问题中的特例，要解决题目中的问题，不妨先从这个特例开始：</p>
+<h4 id="特例"><a href="#特例" class="headerlink" title="特例"></a>特例</h4><p>现在给定一个$W&#x3D;{1,1,1}$ ， $V&#x3D;{1,5,10}$ ， $Y&#x3D;15$ ,求 $X$ 的 $min{\sum_{i&#x3D;1}^{n}w_{i}x_{i}}$ （注意，这里求的是最小个数sum，而不是支付方式$X$）.</p>
+<p>在这里我们将硬币看做等重量，即1，此处映射为对应面额硬币的个数。</p>
+<p>我们给定一个二维数组<code>F[k][y]</code>，表示当前考虑 $1,2,\dots,k$ 的情况下，对于当前金额 $y$ 所需的最小重量（硬币数）。</p>
+<p>我们从头开始，很显然，对于<code>F[1][]</code>，即只考虑 1 元硬币的情况，对于给定的当前 v 的最小值。</p>
+<p>将 $v&#x3D;0$ 置为0.接下来考虑要付 1 元钱的情况，这时只可能有 在原先0元的基础上付 1 元硬币。即 $F[1][1]&#x3D;F[1][0]+w_{1}x_{1}$.</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td style="background-color: yellow">1</td>
+        <td style="background-color: yellow">2</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</div>
+
+<p>以此类推，直到 $y&#x3D;Y$.</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td  style="background-color: yellow">14</td>
+        <td style="background-color: orange">15</td>
+    </tr>
+</table>
+</div>
+
+<p>接下来我们考虑 $k&#x3D;2$ ，即有1元和5元硬币的情况。在 $y &lt; 5$ 的情况下，不能用5元硬币，所以此时直接等于其上面的值。</p>
+<p>直到 $n&#x3D;5$ 可以看到此时可以拿一个5元的硬币了。我们直接从 <code>F[2][0],F[1][5]</code> 中查找最小值，然后加上5元的重量1.</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td style="background-color: yellow">5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[2][]</td>
+        <td style="background-color: yellow">0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td style="background-color: orange">1</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+    </tr>
+</table>
+</div>
+
+<p>同样，对于10元，15元也是同样的处理方法。</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td style="background-color: yellow">15</td>
+    </tr>
+    <tr>
+        <td>F[2][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td style="background-color: yellow">2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td style="background-color: orange">3</td>
+    </tr>
+</table>
+</div>
+
+<p>以此类推，填完表格</p>
+<div class="tablediv">
+<table>
+    <tr>
+        <td>金额</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[1][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>F[2][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td style="background-color: yellow">3</td>
+    </tr>
+    <tr>
+        <td>F[3][]</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td style="background-color: yellow">1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td style="background-color: orange">2</td>
+    </tr>
+</table>
+</div>
+
+
+<h4 id="状态转移方程"><a href="#状态转移方程" class="headerlink" title="状态转移方程"></a>状态转移方程</h4><p>设 $F_{k}(y)$ 表示用前 $k$ 种零钱，总钱数为 $y$ 的最小重量。</p>
+<p>$$\left{<br>\begin{matrix}F_{k+1}(y)&#x3D;\min<br>    \begin{Bmatrix}F_{k}(y)<br>        \F_{k+1}(y-v_{k+1})+w_{k+1}<br>    \end{Bmatrix}<br>\F_{1}(0)&#x3D;0<br>\end{matrix}\right.$$</p>
+<p>$$k&#x3D;1,2,\dots,n-1,y&#x3D;0,1,\dots,Y$$</p>
+<blockquote>
+<p>PPT上给出了另一种状态转移方程，但我倾向于用上方的二选一的方式表达。</p>
+</blockquote>
+<blockquote>
+<p>下面是PPT给出的状态转移方程。<br>$$\left{\begin{matrix}f_{k+1}(y)&#x3D;\min_{0 \le x_{k+1} \le \left \lfloor \frac{y}{v_{k+1}}  \right \rfloor }{F_{k}(y-v_{k+1}x_{k+1})+w_{k+1}x_{k+1}}<br> \f_{1}(y)&#x3D;w_{1}\left \lfloor \frac{y}{v_{1}}  \right \rfloor &#x3D;w_{1}y<br>\end{matrix}\right.$$<br>$$k&#x3D;1,2,\dots,n-1,y&#x3D;0,1,\dots,Y$$</p>
+</blockquote>
+<h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><p>此算法常数级填写了一张二维表格。时间复杂度为<br>$$O(nY)$$</p>
+<p>$n$ 为钱的种数，$Y$ 为需要给付的钱数。</p>
+<p>若需要具体的$X$集合，只需同样<code>[n][Y]</code>大小的数组（或者一个<code>[2][Y]</code>的数组进行滚动），用来存取其选择的单元格，然后通过 $O(n+Y)$ 回溯计可获得 $X$ 的集合。</p>
+<h3 id="贪心-1"><a href="#贪心-1" class="headerlink" title="贪心"></a>贪心</h3><p>用贪心算法解决此问题，只需要保证每次选择都是当前最好的选择。</p>
+<p>针对当前问题，为了能够得到最小的总重量我们就会优先选择单位重量下价值较高的硬币。直到不能再用，再选单位价值次之的。由于题干说明一定有价值为1的硬币，所以一定能保证付到Y价值。</p>
+<h4 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h4><p>此算法需要将硬币按“单位价值比”排序，最快需要 $O(n \log n)$ 时间，此后选择只需要 $O(n)$ 时间。总的时间复杂度是<br>$$O(n \log n)$$</p>
+<h4 id="贪心局限-看看就好"><a href="#贪心局限-看看就好" class="headerlink" title="贪心局限 (看看就好)"></a>贪心局限 (看看就好)</h4><p>我们不妨设这样一串硬币属性：</p>
+<p>$$\frac{v_1}{w_1}\le\frac{v_2}{w_2}\le\dots\le\frac{v_n}{w_n}$$</p>
+<p>使用前 $k$ 种零钱，总钱数为 $y$。</p>
+<p>贪心法的总重为 $G_{k}(y)$，则有如下递推方程</p>
+<p>$$\begin{array}{l}<br>G_{k+1}(y)&#x3D;w_{k+1}\left\lfloor\frac{y}{v_{k+1}}\right\rfloor+G_{k}\left(y \bmod v_{k+1}\right) \quad k1 \<br>G_{1}(y)&#x3D;w_{1}\left\lfloor\frac{y}{v_{1}}\right\rfloor&#x3D;w_{1} y<br>\end{array}$$</p>
+<h5 id="n-1-2"><a href="#n-1-2" class="headerlink" title="n&#x3D;1, 2"></a>n&#x3D;1, 2</h5><p>$n &#x3D; 1$ 只有一种零钱，$F_{1}(y) &#x3D; G_{1}(y) , F_{2}(y) &#x3D; G_{2}(y)$</p>
+<p>$n &#x3D; 2$,  使用价值大的钱越多($x_{2}$越大)，得到的解越好</p>
+<p>$F_{2}(y)&#x3D;\min <em>{0 \leq x</em>{2} \leq\left\lfloor y &#x2F; v_{2}\right\rfloor}\left{F_{1}\left(y-v_{2} x_{2}\right)+w_{2} x_{2}\right}$</p>
+<p>$$\begin{array}{l}<br>{\left[F_{1}\left(y-v_{2} x_{2}\right)+w_{2} x_{2}\right]} -\left[F_{1}\left(y-v_{2}\left(x_{2}+\delta\right)\right)+w_{2}\left(x_{2}+\delta\right)\right] \&#x3D;\left[w_{1}\left(y-v_{2} x_{2}\right)+w_{2} x_{2}\right]-\left[w_{1}\left(y-v_{2} x_{2}-v_{2} \delta\right)+w_{2} x_{2}+w_{2} \delta\right] \&#x3D;w_{1} v_{2} \delta-w_{2} \delta&#x3D;\delta\left(w_{1} v_{2}-w_{2}\right) \geq 0<br>\end{array}$$</p>
+<p>说明$w_{1} ≥ \frac{w_{2}}{v}$，即多使用 $\delta$ 枚第二种硬币的重量更小。</p>
+<h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题 &#x2F;&#x2F;"></a>背包问题 &#x2F;&#x2F;</h2><h2 id="0-1背包变体"><a href="#0-1背包变体" class="headerlink" title="0-1背包变体"></a>0-1背包变体</h2><h3 id="DP-2"><a href="#DP-2" class="headerlink" title="DP"></a>DP</h3><p>简单来说，此问题基于“二维0&#x2F;1背包”。在二维中，我们需要考虑背包的价值，背包的重量。“三维0&#x2F;1背包”增加了“体积”这一维度。要弄清楚此问题，不妨先复习下DP方法解决二维0&#x2F;1背包的思路。</p>
+<h4 id="二维，不考虑体积"><a href="#二维，不考虑体积" class="headerlink" title="二维，不考虑体积"></a>二维，不考虑体积</h4><p>我们从头开始，假设现在背包中放入的物品的价值最优，在考虑下一个物品时，则只需要考虑「放入」与「不放入」。<br>我们用 f[i, j] 表示在前 i 件物品（即物品编号为1-n）中选择若干件放在所剩空间为 j 的背包里所能获得的最大价值，于是就有以下状态转移方程：$$f[i, j] &#x3D;\left{\begin{matrix}max\left {  {f[i-1, j-w[i]]+v[i] , f[i-1, j]}\right } <em>{(j \ge W</em>{i})}\f[i-1, j]<em>{(0 \le j \le W</em>{i})}\end{matrix}\right.$$.</p>
+<h4 id="三维"><a href="#三维" class="headerlink" title="三维"></a>三维</h4><p>和二维相同，在考虑下一个物品时，则只需要考虑「放入」与「不放入」。<br>我们用 f[i, j,k] 表示在前 i 件物品（即物品编号为1-n）中选择若干件放在所剩空间为 j ，所剩载重为 k 的背包里所能获得的最大价值，于是就有以下状态转移方程：$$f[i, j, k] &#x3D;\left{\begin{matrix}max\left {f[i-1, j-w[i], k-b[i]]+v[i], f[i-1, j, k]\right }<em>{(j &gt;&#x3D; w[i], k &gt;&#x3D; b[i])}\ f[i-1, j ,k]</em>{(0 \le j \le W_{i} || 0 \le j \le W_{i})}\end{matrix}\right.$$</p>
+<p>只在二维基础增加一维，其余完全不变。</p>
+<h4 id="实现形式"><a href="#实现形式" class="headerlink" title="实现形式"></a>实现形式</h4><p>根据上面的公式，初始化表格（$f[1,w[0],b[0]]&#x3D;v[0]$，$i&#x3D;0$ 与 $j&#x3D;0$ 与$k&#x3D;0$情况置$0$）。并将$i,j,k$嵌套循环。</p>
+<p>此时这个三维表格即可填满，$f[n,c,d]$即为最大价值。（所有物品n，包最大重c，最大容量d）</p>
+<p>然后自顶向下，找出$f[i-1, j-w[i], k-b[i]]+v[i]$ 与 $f[i-1, j, k]$ 中更大的值，若是前者，则证明当前第 i 件物品已装入；若是后者则未装入。</p>
+<h4 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h4><p>该算法需要填一张三维表格，需要 $O(ncd)$ 时间，回溯表格需要 $O(n)$时间。总共为 $O(n+ncd) &#x3D; O(ncd)$时间复杂度。</p>
+<h3 id="回溯-普通"><a href="#回溯-普通" class="headerlink" title="回溯-普通"></a>回溯-普通</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>在我看来，回溯法有另一个名字：及时止损的遍历法。<br>对于此问题，0-1 背包。每种物品只有选与不选的选项。由此构造一棵 $n$ 层二叉树，左为<code>1</code>，右为<code>0</code>，分别代表<code>选</code>与<code>不选</code>。</p>
+<h4 id="具体些"><a href="#具体些" class="headerlink" title="具体些"></a>具体些</h4><p>我们搜索一棵树，从左子树开始（意味着选择此物品），直到不能够继续装下，丢弃该节点的左子树后，向右搜索，直到叶子结点。然后比较当前的值与最大值，如果符合最优条件，那么记录此最优解，然后<a href="./#%E5%A6%82%E4%BD%95%E5%9B%9E%E6%BA%AF">回溯</a>。如果不符合，那么也回溯。</p>
+<h4 id="如何回溯"><a href="#如何回溯" class="headerlink" title="如何回溯"></a>如何回溯</h4><p>函数回溯法。<br>根据函数递归的性质，在选择一颗子树时，通过“函数调用自身”来进行下层搜索，直到叶子结点，函数将在统计当前路径的价值，比较最大值后自动回溯。</p>
+<h2 id="装载问题"><a href="#装载问题" class="headerlink" title="装载问题"></a>装载问题</h2><h3 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h3><blockquote>
+<p>n 个集装箱装上 2 艘载重分别为 c1 和 c2 的轮船<br><code>P125</code></p>
+</blockquote>
+<h2 id="最优装载"><a href="#最优装载" class="headerlink" title="最优装载 &#x2F;&#x2F;"></a>最优装载 &#x2F;&#x2F;</h2><h3 id="贪心-2"><a href="#贪心-2" class="headerlink" title="贪心"></a>贪心</h3><blockquote>
+<p>n 个集装箱 1, 2, …, n 装上轮船，集装箱 i 的重量 wi , 轮船装载重量限制为 C， 无体积限制.</p>
+</blockquote>
+<p>即重量约束时，个数最多。<br>其实就是重量（这个问题里重量和价值调换了）都为1的硬币问题的另一个极端，即价值约束时，重量最少。<br>但要注意，这里每种只有一个，所以选完就不能再选了</p>
+<h3 id="变体"><a href="#变体" class="headerlink" title="变体"></a>变体</h3><p>如果对体积进行约束呢？<br>其实也很简单，就是现在的实验的硬币问题。即硬币的重量不一，</p>
+<h2 id="最优调度"><a href="#最优调度" class="headerlink" title="最优调度"></a>最优调度</h2><h3 id="贪心-3"><a href="#贪心-3" class="headerlink" title="贪心"></a>贪心</h3><h2 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h2><h3 id="DP-3"><a href="#DP-3" class="headerlink" title="DP"></a>DP</h3><h4 id="子问题-1"><a href="#子问题-1" class="headerlink" title="子问题"></a>子问题</h4><p>我们假设当前$Z&#x3D;&lt;Z_{1}, Z_{2},…, Z_{k}&gt;$已经是LCS，可能有$x_{m} &#x3D; y_{n}$和$x_{m} \ne y_{n}$：</p>
+<h5 id="如果xm-yn"><a href="#如果xm-yn" class="headerlink" title="如果xm &#x3D; yn"></a>如果xm &#x3D; yn</h5><ol>
+<li>则$zk &#x3D; xm &#x3D; yn$ 且 <code>Zk-1</code>是<code>Xm-1</code>和<code>Yn-1</code>的一个<code>LCS</code>.</li>
+</ol>
+<h5 id="如果xm-yn-1"><a href="#如果xm-yn-1" class="headerlink" title="如果xm !&#x3D; yn"></a>如果xm !&#x3D; yn</h5><ol>
+<li>且有 $zk \ne xm$，则<code>Z</code>是<code>Xm-1</code>和<code>Y</code>的一个<code>LCS</code>.</li>
+<li>且有$zk !&#x3D; yn$，则<code>Z</code>是<code>X</code>和<code>Yn-1</code>的一个<code>LCS</code>.</li>
+</ol>
+<h4 id="状态转移方程-1"><a href="#状态转移方程-1" class="headerlink" title="状态转移方程"></a>状态转移方程</h4><p>$$ L[i][j] &#x3D; \begin{cases} 0    &amp;     i &#x3D; 0 \space or \space j &#x3D; 0<br>\\max{L[i-1][j],L[i][j-1]}  &amp; x_i\ne y_j,i&gt;0,j&gt;0<br>\ L[i-1][j-1]+1  &amp; x_i &#x3D; y_j,i&gt;0,j&gt;0<br>\end{cases}<br> $$</p>
+<p>因此，我们只需要从<code>c[0][0]</code>开始填表，填到<code>c[m][n]</code>，所得到的<code>c[m-1][n-1]</code>就是<code>LCS_length</code>.</p>
+<h4 id="回溯-1"><a href="#回溯-1" class="headerlink" title="回溯"></a>回溯</h4><p>若想得到<code>LCS</code>，回溯一次<code>b数组</code>，从最后一个位置开始往前遍历：</p>
+<ol>
+<li>如果箭头是<code>↖</code>，则代表这个字符是<code>LCS</code>的一员，存下来后 <code>i-- , j--</code></li>
+<li>如果箭头是<code>←</code>，则代表这个字符不是<code>LCS</code>的一员，<code>j--</code></li>
+<li>如果箭头是<code>↑</code>，也代表这个字符不是<code>LCS</code>的一员，<code>i--</code></li>
+<li>如此直到$i &#x3D; 0$或者$j &#x3D; 0$时停止，最后存下来的字符就是所有的<code>LCS</code>字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>序列</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>X</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>B</td>
+<td>D</td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>B</td>
+<td>D</td>
+<td>C</td>
+<td>A</td>
+<td>B</td>
+<td>A</td>
+<td>\0</td>
+</tr>
+<tr>
+<td>Target</td>
+<td>B</td>
+<td>C</td>
+<td>B</td>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img   src="https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97_DP%E5%9B%BE.3lvhax8eok80.png"  alt="最长公共子序列_DP图"></p>
+<h4 id="复杂度-3"><a href="#复杂度-3" class="headerlink" title="复杂度"></a>复杂度</h4><p>该算法无重复地填写了一张(如果需要具体的子序列内容，则是两张)二维表格，每个格子填写时都仅进行了常数次比较。时间复杂度 $O(mn)$.</p>
+<p>回溯时，在任何情况下，都需要从<code>[m][n]</code>回溯到<code>[1][1]</code>，即回溯时间复杂度为$O(m+n)$.</p>
+<p>所以DP算法的时间复杂度为$O(mn)$.</p>
+<h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><h3 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h3><h2 id="二分排序"><a href="#二分排序" class="headerlink" title="二分排序"></a>二分排序</h2><h3 id="分治-1"><a href="#分治-1" class="headerlink" title="分治"></a>分治</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>极简分析法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">     T(n)            拆分 n/2, 归并 n/2 ，一共是n/2 + n/2 = n</span><br><span class="line"></span><br><span class="line">     /    \            以下依此类推：</span><br><span class="line"></span><br><span class="line">  T(n/2) T(n/2)      一共是 n/2*2 = n</span><br><span class="line"></span><br><span class="line"> /    \ /     \</span><br><span class="line"></span><br><span class="line">T(n/4)    ...........   一共是 n/4*4 = n</span><br></pre></td></tr></table></figure>
+<p>一共有$\log n$层，故复杂度是 $O(n\log n)$</p>
+<p>看书上<code>P22</code></p>
+<h2 id="指定和"><a href="#指定和" class="headerlink" title="指定和"></a>指定和</h2><h3 id="回溯-2"><a href="#回溯-2" class="headerlink" title="回溯"></a>回溯</h3><blockquote>
+<p>给定n个正整数$w_i(1&lt;&#x3D;i&lt;&#x3D;n)$和M。要求从集合$(w_1,w_2,\dots ,w_n)$中找出所有可能的子集，使得每一个子集中各元素的累加和等于M。<br>例如：令$(w_1,w_2,w_3,w_4)&#x3D;(11,13,24,7)$和$M&#x3D;31$。求该问题的解空间树。</p>
+</blockquote>
+<h1 id="一些补充"><a href="#一些补充" class="headerlink" title="一些补充"></a>一些补充</h1><h2 id="作业一"><a href="#作业一" class="headerlink" title="作业一"></a>作业一</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><ol>
+<li>假设某算法在输入规模为n时的计算时间为$T(n)&#x3D;3*2^n$。在某台计算机上实现并完成该算法的时间为t秒。现有另一台计算机，其运行速度为第一台的$64$倍，那么在这台新机器上用统一算法在t秒内能解输入规模为多大的问题？</li>
+<li>若上述算法的计算时间改进为$T(n)&#x3D;n^2$，其余条件不变，则在新机器上用t秒时间能解输入规模为多大的问题？</li>
+<li>若上述算法的计算时间进一步改进为$T(n)&#x3D;8$，其余条件不变，则在新机器上用t秒时间能解输入规模为多大的问题？</li>
+</ol>
+<p>解答：</p>
+<ol>
+<li>原计算机A，高校计算机B<br>对A，有$T_A(n)&#x3D;3 \times 2^n &#x3D; t$<br>对B，有$\frac {t}{64}&#x3D;\frac {3 \times 2^n}{64}&#x3D;T_B(n)$<br>$t&#x3D;T_B(n’)&#x3D;T_A(n)&#x3D; \times 2^n&#x3D;\frac {3 \times 2^{n’}}{64}$<br>$\therefore n’&#x3D;n+6$<br>$\therefore$在t时间内，新机器能解决(n+6)规模的问题。</li>
+<li>同上$T_A(n)&#x3D;n^2&#x3D;t$<br>$T_B(n)&#x3D;\frac{n^2}{64}$<br>$t&#x3D;T_B(n’)&#x3D;T_A(n)&#x3D;\frac{n^2}{64}&#x3D;n^2$<br>$\therefore n’&#x3D;8n$<br>$\therefore$在t时间内，新机器能解决(8n)规模的问题。</li>
+<li>由于算法计算时间为定值，所以无论规模多大多小，对于A机器，其总能在t时刻完成，对于B，总在$\frac{t}{64}$时刻完成。<br>因此B能在t秒时间内解决任意规模的问题。</li>
+</ol>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>函数的渐进表达式。注意：需要给出具体的解题过程。<br>（1）$3n^2+10n$<br>（2）$\frac {n^2}{10} +2n$<br>（3）$21 + \frac {1}{n}$<br>（4）$\log n^3$<br>（5）$10\log 3^n$</p>
+<!-- ![](https://s3.ax1x.com/2020/12/05/DOZAJI.png) -->
+
+<h2 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h2><blockquote>
+<p>统计数字</p>
+</blockquote>
+<p>以基础值和修正值两部分计算，首先看基础值考虑 $1\to 10^i$ 的情况，修正值即 $10^i+1\to n$ 的情况，先看基础值：<br>(1)首先从个位开始审视：对于1-10这十个数之个位，可以发现分别出现了1-9、0. 即任意地目标X都出现了1次。<br>(2)以此审视1-100的十位，同理任意的X都出现了10次，如10-19中，十位为“1”的情况有10种。<br>(3)以此类推，归纳推理。审视 $1\to 10^i$ 的第二位（即右起第i位），其任意X都出现了 $10^{i-1}$ 次。<br>综上，基础值为高位的所有数字乘以当前位权，即 {高位全部数字}* $10^{i-1}$例如计算525的十位，对于十位任意的X都出现了 {5}* $10^{2-1}$次。不难看出，基础值就是当前位上任意X都出现的同样的次数。</p>
+<p>接着考虑修正值，将问题简化，如525的修正值只考虑从501-525的情况。<br>(4)对于1-525，在计算十位时，若X&#x3D;1 （2&gt;X），则501-525里包含了全部的十位为1的情况，即510-519，所以需加上次。<br>(5)若X&#x3D;2，则需要看低位的所有数字，十位为2的情况将继续重复5+1次，即520、521、522、523、524、525.<br>(6)若X&#x3D;3（2 &lt; X）,十位为3的情况不存在。</p>
+<p>总结以上算法，可以看到，当计算右数第 i 位包含的 X 的个数时：<br>(1)取右起第 i 位左边（高位）的全部数字，乘以，得到基础值 a &#x3D; {高位全部数字}* $10^{i-1}$ .<br>(2)取右起第 i 位数字，计算修正值和最终结果：<br>(3)如果大于 X，则结果为 $a+10^{i-1}$.<br>(4)如果小于 X，则结果为 a.<br>(5)如果等于 X，则取第 i 位右边（低位）数字，设为 b，最后结果为 $a+b+1$.<br>这里的 $X \in {1,2,\dots ,9}$ .由于0不会出现在最高位，所以需要另外计算：<br>(1)从个位开始，计算右起第i位就要结束，需要将for循环的判断条件改为 k &#x2F; 10 !&#x3D; 0. （k为高位的全部数字）。<br>(2)其次，右起第 i 位的基础值 a 要变成 {高位全部数字}*$10^{i-1}-1$ ，如上述④、⑤，我们在考虑修正值时会将低位为0的情况考虑近来。但若X&#x3D;0，则会多计算一次修正值（例如525，修正值范围应为501-525，不会包含500）。需要在计算时主动减去。</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/07b6c55efa95.html"
+                                   title="分支限界法解0-1背包问题——基于JavaScript"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">分支限界法解0-1背包问题——基于JavaScript</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/1b8d63a1b61b.html"
+                                   title="回溯法解0-1背包问题——基于JavaScript"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">回溯法解0-1背包问题——基于JavaScript</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="twikoo-container">
+        <div id="twikoo-comment"></div>
+        <script 
+                src="//unpkg.com/twikoo@1.6.22/dist/twikoo.all.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initTwikoo = () => {
+            if (window?.twikoo) {
+              twikoo.init({
+                el: '#twikoo-comment',
+                envId: 'https://hankzhang-comment.netlify.app/.netlify/functions/twikoo',
+                region: '',
+                lang: 'zh-CN' || 'zh-CN'
+              })
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initTwikoo()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initTwikoo()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initTwikoo)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E8%80%83%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">我们考什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">题型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9"><span class="nav-number">1.2.1.</span> <span class="nav-text">选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.2.2.</span> <span class="nav-text">填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E7%AD%94"><span class="nav-number">1.2.3.</span> <span class="nav-text">简答</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.2.4.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">贪心</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E7%A7%8D%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">五种算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%90%86%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%B8%90%E8%BF%9B%E7%9A%84%E7%95%8C"><span class="nav-number">3.1.</span> <span class="nav-text">函数渐进的界</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#O"><span class="nav-number">3.1.1.</span> <span class="nav-text">$O$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Omega"><span class="nav-number">3.1.2.</span> <span class="nav-text">$\Omega$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Theta"><span class="nav-number">3.1.3.</span> <span class="nav-text">$\Theta$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#o-omega"><span class="nav-number">3.1.4.</span> <span class="nav-text">$o$ &#x2F; $\omega$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E6%B8%90%E8%BF%9B%E7%95%8C%E7%9A%84%E5%AE%9A%E7%90%86"><span class="nav-number">3.1.5.</span> <span class="nav-text">几个渐进界的定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">3.1.5.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%862"><span class="nav-number">3.1.5.2.</span> <span class="nav-text">定理2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%863"><span class="nav-number">3.1.5.3.</span> <span class="nav-text">定理3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.1.5.4.</span> <span class="nav-text">小结</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E5%87%BD%E6%95%B0%E7%9A%84%E9%98%B6%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">3.1.5.4.1.</span> <span class="nav-text">估计函数的阶的方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%A0%E7%B1%BB%E9%87%8D%E8%A6%81%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.5.4.2.</span> <span class="nav-text">几类重要的函数</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E6%8E%A8%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B1%82%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">递推方程的求法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%B1%BB"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5"><span class="nav-number">3.2.1.1.1.</span> <span class="nav-text">直接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8D%A2%E5%85%83"><span class="nav-number">3.2.1.1.2.</span> <span class="nav-text">换元</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%AE%E6%B6%88"><span class="nav-number">3.2.1.1.3.</span> <span class="nav-text">差消</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E6%B3%95"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">尝试法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB"><span class="nav-number">3.2.2.</span> <span class="nav-text">第二类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AE%9A%E7%90%86"><span class="nav-number">3.2.3.</span> <span class="nav-text">主定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%80%83%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">考到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E9%93%BE%E7%9B%B8%E4%B9%98"><span class="nav-number">4.1.</span> <span class="nav-text">矩阵链相乘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DP"><span class="nav-number">4.1.1.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">子问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E6%8E%A8%E6%96%B9%E7%A8%8B"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">递推方程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E9%92%B1"><span class="nav-number">4.2.</span> <span class="nav-text">零钱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E5%8C%96%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.1.</span> <span class="nav-text">形式化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DP-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E4%BE%8B"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">特例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">状态转移方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83-1"><span class="nav-number">4.2.3.</span> <span class="nav-text">贪心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6-1"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E5%B1%80%E9%99%90-%E7%9C%8B%E7%9C%8B%E5%B0%B1%E5%A5%BD"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">贪心局限 (看看就好)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#n-1-2"><span class="nav-number">4.2.3.2.1.</span> <span class="nav-text">n&#x3D;1, 2</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">4.3.</span> <span class="nav-text">背包问题 &#x2F;&#x2F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1%E8%83%8C%E5%8C%85%E5%8F%98%E4%BD%93"><span class="nav-number">4.4.</span> <span class="nav-text">0-1背包变体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DP-2"><span class="nav-number">4.4.1.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%EF%BC%8C%E4%B8%8D%E8%80%83%E8%99%91%E4%BD%93%E7%A7%AF"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">二维，不考虑体积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4"><span class="nav-number">4.4.1.2.</span> <span class="nav-text">三维</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%BD%A2%E5%BC%8F"><span class="nav-number">4.4.1.3.</span> <span class="nav-text">实现形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6-2"><span class="nav-number">4.4.1.4.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF-%E6%99%AE%E9%80%9A"><span class="nav-number">4.4.2.</span> <span class="nav-text">回溯-普通</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">4.4.2.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BA%9B"><span class="nav-number">4.4.2.2.</span> <span class="nav-text">具体些</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9B%9E%E6%BA%AF"><span class="nav-number">4.4.2.3.</span> <span class="nav-text">如何回溯</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98"><span class="nav-number">4.5.</span> <span class="nav-text">装载问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF"><span class="nav-number">4.5.1.</span> <span class="nav-text">回溯</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E8%A3%85%E8%BD%BD"><span class="nav-number">4.6.</span> <span class="nav-text">最优装载 &#x2F;&#x2F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83-2"><span class="nav-number">4.6.1.</span> <span class="nav-text">贪心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E4%BD%93"><span class="nav-number">4.6.2.</span> <span class="nav-text">变体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E8%B0%83%E5%BA%A6"><span class="nav-number">4.7.</span> <span class="nav-text">最优调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83-3"><span class="nav-number">4.7.1.</span> <span class="nav-text">贪心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LCS"><span class="nav-number">4.8.</span> <span class="nav-text">LCS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DP-3"><span class="nav-number">4.8.1.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E9%97%AE%E9%A2%98-1"><span class="nav-number">4.8.1.1.</span> <span class="nav-text">子问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9Cxm-yn"><span class="nav-number">4.8.1.1.1.</span> <span class="nav-text">如果xm &#x3D; yn</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9Cxm-yn-1"><span class="nav-number">4.8.1.1.2.</span> <span class="nav-text">如果xm !&#x3D; yn</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B-1"><span class="nav-number">4.8.1.2.</span> <span class="nav-text">状态转移方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF-1"><span class="nav-number">4.8.1.3.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6-3"><span class="nav-number">4.8.1.4.</span> <span class="nav-text">复杂度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2"><span class="nav-number">4.9.</span> <span class="nav-text">二分搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%B2%BB"><span class="nav-number">4.9.1.</span> <span class="nav-text">分治</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%8E%92%E5%BA%8F"><span class="nav-number">4.10.</span> <span class="nav-text">二分排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%B2%BB-1"><span class="nav-number">4.10.1.</span> <span class="nav-text">分治</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">4.10.1.1.</span> <span class="nav-text">思路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E5%92%8C"><span class="nav-number">4.11.</span> <span class="nav-text">指定和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF-2"><span class="nav-number">4.11.1.</span> <span class="nav-text">回溯</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E8%A1%A5%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">一些补充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A%E4%B8%80"><span class="nav-number">5.1.</span> <span class="nav-text">作业一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">5.1.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">5.1.2.</span> <span class="nav-text">2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%80"><span class="nav-number">5.2.</span> <span class="nav-text">实验一</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Hank</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E8%80%83%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">我们考什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">题型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9"><span class="nav-number">1.2.1.</span> <span class="nav-text">选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E7%A9%BA"><span class="nav-number">1.2.2.</span> <span class="nav-text">填空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E7%AD%94"><span class="nav-number">1.2.3.</span> <span class="nav-text">简答</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.2.4.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">贪心</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E7%A7%8D%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">五种算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%90%86%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%B8%90%E8%BF%9B%E7%9A%84%E7%95%8C"><span class="nav-number">3.1.</span> <span class="nav-text">函数渐进的界</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#O"><span class="nav-number">3.1.1.</span> <span class="nav-text">$O$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Omega"><span class="nav-number">3.1.2.</span> <span class="nav-text">$\Omega$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Theta"><span class="nav-number">3.1.3.</span> <span class="nav-text">$\Theta$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#o-omega"><span class="nav-number">3.1.4.</span> <span class="nav-text">$o$ &#x2F; $\omega$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E6%B8%90%E8%BF%9B%E7%95%8C%E7%9A%84%E5%AE%9A%E7%90%86"><span class="nav-number">3.1.5.</span> <span class="nav-text">几个渐进界的定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">3.1.5.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%862"><span class="nav-number">3.1.5.2.</span> <span class="nav-text">定理2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%863"><span class="nav-number">3.1.5.3.</span> <span class="nav-text">定理3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.1.5.4.</span> <span class="nav-text">小结</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E5%87%BD%E6%95%B0%E7%9A%84%E9%98%B6%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">3.1.5.4.1.</span> <span class="nav-text">估计函数的阶的方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%A0%E7%B1%BB%E9%87%8D%E8%A6%81%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.5.4.2.</span> <span class="nav-text">几类重要的函数</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E6%8E%A8%E6%96%B9%E7%A8%8B%E7%9A%84%E6%B1%82%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">递推方程的求法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%B1%BB"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5"><span class="nav-number">3.2.1.1.1.</span> <span class="nav-text">直接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8D%A2%E5%85%83"><span class="nav-number">3.2.1.1.2.</span> <span class="nav-text">换元</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%AE%E6%B6%88"><span class="nav-number">3.2.1.1.3.</span> <span class="nav-text">差消</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E6%B3%95"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">尝试法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB"><span class="nav-number">3.2.2.</span> <span class="nav-text">第二类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AE%9A%E7%90%86"><span class="nav-number">3.2.3.</span> <span class="nav-text">主定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%80%83%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">考到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E9%93%BE%E7%9B%B8%E4%B9%98"><span class="nav-number">4.1.</span> <span class="nav-text">矩阵链相乘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DP"><span class="nav-number">4.1.1.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">子问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E6%8E%A8%E6%96%B9%E7%A8%8B"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">递推方程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E9%92%B1"><span class="nav-number">4.2.</span> <span class="nav-text">零钱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E5%BC%8F%E5%8C%96%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.1.</span> <span class="nav-text">形式化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DP-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E4%BE%8B"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">特例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">状态转移方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83-1"><span class="nav-number">4.2.3.</span> <span class="nav-text">贪心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6-1"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E5%B1%80%E9%99%90-%E7%9C%8B%E7%9C%8B%E5%B0%B1%E5%A5%BD"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">贪心局限 (看看就好)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#n-1-2"><span class="nav-number">4.2.3.2.1.</span> <span class="nav-text">n&#x3D;1, 2</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">4.3.</span> <span class="nav-text">背包问题 &#x2F;&#x2F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1%E8%83%8C%E5%8C%85%E5%8F%98%E4%BD%93"><span class="nav-number">4.4.</span> <span class="nav-text">0-1背包变体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DP-2"><span class="nav-number">4.4.1.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%EF%BC%8C%E4%B8%8D%E8%80%83%E8%99%91%E4%BD%93%E7%A7%AF"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">二维，不考虑体积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4"><span class="nav-number">4.4.1.2.</span> <span class="nav-text">三维</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%BD%A2%E5%BC%8F"><span class="nav-number">4.4.1.3.</span> <span class="nav-text">实现形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6-2"><span class="nav-number">4.4.1.4.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF-%E6%99%AE%E9%80%9A"><span class="nav-number">4.4.2.</span> <span class="nav-text">回溯-普通</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">4.4.2.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BA%9B"><span class="nav-number">4.4.2.2.</span> <span class="nav-text">具体些</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9B%9E%E6%BA%AF"><span class="nav-number">4.4.2.3.</span> <span class="nav-text">如何回溯</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98"><span class="nav-number">4.5.</span> <span class="nav-text">装载问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF"><span class="nav-number">4.5.1.</span> <span class="nav-text">回溯</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E8%A3%85%E8%BD%BD"><span class="nav-number">4.6.</span> <span class="nav-text">最优装载 &#x2F;&#x2F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83-2"><span class="nav-number">4.6.1.</span> <span class="nav-text">贪心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E4%BD%93"><span class="nav-number">4.6.2.</span> <span class="nav-text">变体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E8%B0%83%E5%BA%A6"><span class="nav-number">4.7.</span> <span class="nav-text">最优调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83-3"><span class="nav-number">4.7.1.</span> <span class="nav-text">贪心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LCS"><span class="nav-number">4.8.</span> <span class="nav-text">LCS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DP-3"><span class="nav-number">4.8.1.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E9%97%AE%E9%A2%98-1"><span class="nav-number">4.8.1.1.</span> <span class="nav-text">子问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9Cxm-yn"><span class="nav-number">4.8.1.1.1.</span> <span class="nav-text">如果xm &#x3D; yn</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9Cxm-yn-1"><span class="nav-number">4.8.1.1.2.</span> <span class="nav-text">如果xm !&#x3D; yn</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B-1"><span class="nav-number">4.8.1.2.</span> <span class="nav-text">状态转移方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF-1"><span class="nav-number">4.8.1.3.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6-3"><span class="nav-number">4.8.1.4.</span> <span class="nav-text">复杂度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2"><span class="nav-number">4.9.</span> <span class="nav-text">二分搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%B2%BB"><span class="nav-number">4.9.1.</span> <span class="nav-text">分治</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%8E%92%E5%BA%8F"><span class="nav-number">4.10.</span> <span class="nav-text">二分排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%B2%BB-1"><span class="nav-number">4.10.1.</span> <span class="nav-text">分治</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">4.10.1.1.</span> <span class="nav-text">思路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E5%92%8C"><span class="nav-number">4.11.</span> <span class="nav-text">指定和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF-2"><span class="nav-number">4.11.1.</span> <span class="nav-text">回溯</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E8%A1%A5%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">一些补充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A%E4%B8%80"><span class="nav-number">5.1.</span> <span class="nav-text">作业一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">5.1.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">5.1.2.</span> <span class="nav-text">2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%80"><span class="nav-number">5.2.</span> <span class="nav-text">实验一</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/utils.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/header-shrink.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/back2top.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/toggle-theme.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/code-block.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/main.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

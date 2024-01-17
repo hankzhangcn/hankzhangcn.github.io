@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Hank">
+    
+    <title>
+        
+            分支限界法解0-1背包问题——基于JavaScript |
+        
+        电瀚
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-keep@4.0.6/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"hankzhang.cn","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"电瀚","author":"Hank","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"Archives":"/archives","Links":"/links","About":"/about","Changelog":"/changelog"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/hankzhangcn","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"mailto://whoishank@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"category":false,"tag":false,"announcement":null},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null},"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"https://hankzhang-comment.netlify.app/.netlify/functions/twikoo","region":null,"version":"1.6.22"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"unpkg"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"style":{"primary_color":"#eccc68","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","first_screen":{"enable":true,"background_img":"https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/IFS国金中心.6vtxrc499gw0.jpg","description":"专注电子信息 的 电瀚","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"home_article":{"category":{"enable":false,"limit":3},"tag":{"enable":false,"limit":5}},"root":"","version":"4.0.6"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               电瀚
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <a class=""
+                           href="/"
+                        >首页</a>
+                    </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >归档</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >友链</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >关于</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >更新日志</a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            <li class="drawer-menu-item flex-center">
+                <a class=""
+                   href="/"
+                >首页</a>
+            </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links"
+                    >友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog"
+                    >更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+                <div class="post-content-top border-box"
+                     style="height: 13.8rem"
+                >
+                    <div class="cover-post-title">
+                        分支限界法解0-1背包问题——基于JavaScript
+                    </div>
+                    <img class="post-cover" src="https://jsd.cdn.zzko.cn/gh/hankzhangcn/CDN@master/img/分支限界法解01背包_封面.4r8t8drfsc0.jpg"
+                         onerror="this.style.display='none'"
+                    >
+                </div>
+            
+
+            <div class="post-content-bottom border-box has-cover">
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Hank</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-12-05 00:00</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sat Dec 05 2020 00:00:00 GMT+0000">2020-12-05 00:00</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BD%9C%E4%B8%9A/">作业</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="实验五-回溯算法"><a href="#实验五-回溯算法" class="headerlink" title="实验五  回溯算法"></a>实验五  回溯算法</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>掌握回溯法算法的设计与分析步骤以及算法的具体实现。</p>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>实验时间：2学时，对于给定的问题描述，生成实验报告。</p>
+<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p>问题描述：有 $n$ 种物品，每种物品只有 $1$ 个。第 $i$ 种物品价值为 $v_i$，重量为 $w_i$，$i &#x3D; 1, 2, \dots, n$。问如何选择放入背包的物品，使得总重量不超过 $B$，而价值达到最大？ </p>
+<ol>
+<li>使用回溯算法解决问题，给出分析过程。</li>
+<li>给出算法的具体实现过程（源码及其详细注释）</li>
+<li>给出算法的运行结果。</li>
+</ol>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>分支限界法有许多种，为了便于理解，我们这里使用课堂上介绍的代价函数来求解。虽然课堂上介绍的代价函数是针对于“背包问题”的，但依然适用于“0-1背包问题”。<br>对于此问题，0-1 背包。每种物品只有选与不选的选项。由此构造一棵 $n$ 层二叉树，左为<code>1</code>，右为<code>0</code>，分别代表<code>选</code>与<code>不选</code>。<br>因为分支限界法基于是一种基于回溯算法的优化，关于此问题，具体可以参考前篇<a href="fb8b72d0129b.html">0_1背包问题的回溯解法</a>。本文只介绍其优化的要点。</p>
+<h2 id="具体些"><a href="#具体些" class="headerlink" title="具体些"></a>具体些</h2><p>我们把一个结点以下所有以该点为根的子树所有可行解的值叫做<code>上界</code>或<code>下界</code>，通俗来说就是这个点以下所有点可能取到的最大值或最小值。<br>对于0-1背包，要在给定的重量里，求的价值的最大值，是极大化问题，所以要得到一个结点的上界的函数表达，我们称之为<code>代价函数</code>。<br>回到搜索结点这里来讲，当我们访问到下层孩子结点时，我们需要考虑</p>
+<ol>
+<li>还能装下这个结点吗？</li>
+<li>这个结点的上界（代价函数得到的值）是否高于现在的最优解？</li>
+</ol>
+<p>对于能不能装下结点的物品，显然很容易得出答案。但如何知道这个节点的上界呢？<br>不妨先对这几个物品按照其价值重量比排序，可以知道，其子树最高不可能超过当前结点的<code>价值重量比*背包剩余重量</code>。这就是其上界了。</p>
+<p>形式化表达，有，</p>
+<blockquote>
+<p>代价函数 &#x3D; 已装入价值 + Δ<br>Δ：还可继续装入最大价值的上界<br>Δ &#x3D; 背包剩余重量 × $\frac {v_{k+1}}{w_{k+1}}$ (可装)<br>Δ &#x3D; 0(不可装)</p>
+</blockquote>
+<p>如果其上界都不能超出现在的最优解，那么就剪掉该节点的子树，直接回溯。</p>
+<h2 id="如何回溯"><a href="#如何回溯" class="headerlink" title="如何回溯"></a>如何回溯</h2><p>函数回溯法。<br>根据函数递归的性质，在选择一颗子树时，通过“函数调用自身”来进行下层搜索，直到叶子结点，函数将在统计当前路径的价值，比较最大值后自动回溯。</p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><blockquote>
+<p>你也可以在下方操作此程序，注意使用英文逗号分隔数字</p>
+</blockquote>
+<style>
+    form input{
+        height: 40px;
+        margin: 20px;
+        border-radius: 10px;
+        padding-left: 10px;
+        min-width: 300px;
+        transition: box-shadow 0.25s ease;
+        outline: none;
+        border:none;
+        background-color: #e3e3e3;
+    }
+    form input:hover{
+          box-shadow:0 10px 8px rgba(0, 0, 0, 0.158);
+      }
+</style>
+<form class= 'form-horizontal'>
+    <fieldset>
+    <legend>回溯法求0-1背包</legend>
+        <a>最大载重</a><input id='w' type='text' placeholder='100' value='100'/></br>
+        <a>&nbsp&nbsp&nbsp价值&nbsp&nbsp&nbsp</a><input id='val' type='text' placeholder='20,30,65,40,60' value='20,30,65,40,60'/></br>
+        <a>&nbsp&nbsp&nbsp重量&nbsp&nbsp&nbsp</a><input id='wei' type='text' placeholder='10,20,30,40,60'value='10,20,30,40,60'/></br>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type='button' id='submit' value='开始回溯'></input></br></br>
+        <a>回溯法求最优价值：</a><a id='mv'>155</a></br>
+        <a>回溯法求出的最优选择：</a><a id='bp'>Y,Y,Y,Y,N</a></br>
+    </fieldset>
+</form>
+
+<script>
+    var n,w;
+    var ans=0;
+    var ans_num = new Array()
+    var path = new Array();
+    var bestpath = new Array();
+    var a =new Array();
+    
+    function pan(x,y){
+        return y.vpw - x.vpw 
+    }
+
+    // 当前结点的代价函数
+    // 如果剩下的所有重量的都用在
+    // 当前结点的这个最大价值比上，能不能超出最优解。
+    function bAndB(x,wi,vl)
+    {
+        vl+=(w-wi)*a[x].vpw;
+        if(vl<=ans)
+            return true
+        return false
+    }
+
+    // 初始化，将得到的信息重量和价值push到a变量中
+    // 同时算出vpw，并标记其初试序号
+    function init(values,weights)
+    {
+        values.map((cur,index)=>
+        {
+            a.push(
+            {
+                'val': values[index],
+                'wei': weights[index],
+                'vpw': values[index]/weights[index],
+                'ind': index
+            })
+        })
+        a.sort(pan)
+    }
+
+    function search(x,wi,vl)
+    {
+        // 如果已经到叶子结点
+        if(x>=n)
+        {
+            // 那么检查是否是最优解
+            if(vl>ans)
+            {
+                ans = vl;
+                // 是最优解，记录路径
+                for(var i = 0; i < n ; i++)
+                {
+                    if(path[i])
+                        bestpath[i] = 'Y';
+                    else
+                        bestpath[i] = 'N';
+                }
+            }
+            return;
+        }
+        // 如果当前结点的上界仍不能超出最优解，就放弃此结点
+        if(bAndB(x,wi,vl))
+            return ;
+        //  如果还没有超出包的最大重量，那么选择这个结点，并且继续向下搜索
+        if(wi+a[x].wei<=w)
+        {
+            path[x] = 1;
+            search(x+1,wi+a[x].wei,vl+a[x].val);
+            path[x] = 0;
+        }
+        // 如果不能选了，就放弃这个结点的左子树，向右子树搜索
+        search(x+1,wi,vl);
+    }
+    
+    function output()
+    {
+        for(var i=0;i<n;i++)
+            {
+                //统计结果，对于选中的，输出其原始序号。
+                if(bestpath[i]=='Y')
+                    ans_num.push(a[i].ind+1)
+            }
+            console.log()
+            document.getElementById("mv").innerHTML = ans;
+            document.getElementById("bp").innerHTML = ans_num;
+    }
+
+    document.getElementById('submit').onclick = function(event)
+    {
+        //每次按钮初始化
+        n=0;
+        w=0;
+        ans=0;
+        ans_num.splice(0,ans_num.length);
+        path.splice(0,path.length);
+        bestpath.splice(0,bestpath.length);
+        a.splice(0,a.length);
+
+        // 总重量
+        w =parseInt(document.getElementById('w').value);
+        
+        // 每个物品的价值
+        var v_str =  document.getElementById('val').value ;
+        var values = v_str.split( ',' );
+        values=values.map(Number);
+        // 获取物品的个数
+        n = values.length;
+        
+        //每个物品的重量
+        var w_str =  document.getElementById('wei').value ;
+        var weights = w_str.split( ',' );
+        weights=weights.map(Number);
+
+        // 可行性检查
+        if(values.length == weights.length)
+        {
+            init(values,weights)
+            search(0,0,0)
+            output()
+        }
+        else
+            alert('重量 和 价值 不对应，数目不同。')
+    }
+</script>
+
+<h1 id="源程序"><a href="#源程序" class="headerlink" title="源程序"></a>源程序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n,w;</span><br><span class="line"><span class="keyword">var</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> ans_num = <span class="keyword">new</span> <span class="title class_">Array</span>()</span><br><span class="line"><span class="keyword">var</span> path = <span class="keyword">new</span> <span class="title class_">Array</span>();</span><br><span class="line"><span class="keyword">var</span> bestpath = <span class="keyword">new</span> <span class="title class_">Array</span>();</span><br><span class="line"><span class="keyword">var</span> a =<span class="keyword">new</span> <span class="title class_">Array</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pan</span>(<span class="params">x,y</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> y.<span class="property">vpw</span> - x.<span class="property">vpw</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前结点的代价函数</span></span><br><span class="line"><span class="comment">// 如果剩下的所有重量的都用在</span></span><br><span class="line"><span class="comment">// 当前结点的这个最大价值比上，能不能超出最优解。</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">bAndB</span>(<span class="params">x,wi,vl</span>)</span><br><span class="line">&#123;</span><br><span class="line">    vl+=(w-wi)*a[x].<span class="property">vpw</span>;</span><br><span class="line">    <span class="keyword">if</span>(vl&lt;=ans)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化，将得到的信息重量和价值push到a变量中</span></span><br><span class="line"><span class="comment">// 同时算出vpw，并标记其初试序号</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">init</span>(<span class="params">values,weights</span>)</span><br><span class="line">&#123;</span><br><span class="line">    values.<span class="title function_">map</span>(<span class="function">(<span class="params">cur,index</span>)=&gt;</span></span><br><span class="line">    &#123;</span><br><span class="line">        a.<span class="title function_">push</span>(</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;val&#x27;</span>: values[index],</span><br><span class="line">            <span class="string">&#x27;wei&#x27;</span>: weights[index],</span><br><span class="line">            <span class="string">&#x27;vpw&#x27;</span>: values[index]/weights[index],</span><br><span class="line">            <span class="string">&#x27;ind&#x27;</span>: index</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    a.<span class="title function_">sort</span>(pan)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">search</span>(<span class="params">x,wi,vl</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 如果已经到叶子结点</span></span><br><span class="line">    <span class="keyword">if</span>(x&gt;=n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 那么检查是否是最优解</span></span><br><span class="line">        <span class="keyword">if</span>(vl&gt;ans)</span><br><span class="line">        &#123;</span><br><span class="line">            ans = vl;</span><br><span class="line">            <span class="comment">// 是最优解，记录路径</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; n ; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(path[i])</span><br><span class="line">                    bestpath[i] = <span class="string">&#x27;Y&#x27;</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    bestpath[i] = <span class="string">&#x27;N&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果当前结点的上界仍不能超出最优解，就放弃此结点</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_">bAndB</span>(x,wi,vl))</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    <span class="comment">//  如果还没有超出包的最大重量，那么选择这个结点，并且继续向下搜索</span></span><br><span class="line">    <span class="keyword">if</span>(wi+a[x].<span class="property">wei</span>&lt;=w)</span><br><span class="line">    &#123;</span><br><span class="line">        path[x] = <span class="number">1</span>;</span><br><span class="line">        <span class="title function_">search</span>(x+<span class="number">1</span>,wi+a[x].<span class="property">wei</span>,vl+a[x].<span class="property">val</span>);</span><br><span class="line">        path[x] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果不能选了，就放弃这个结点的左子树，向右子树搜索</span></span><br><span class="line">    <span class="title function_">search</span>(x+<span class="number">1</span>,wi,vl);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">output</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//统计结果，对于选中的，输出其原始序号。</span></span><br><span class="line">            <span class="keyword">if</span>(bestpath[i]==<span class="string">&#x27;Y&#x27;</span>)</span><br><span class="line">                ans_num.<span class="title function_">push</span>(a[i].<span class="property">ind</span>+<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>()</span><br><span class="line">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;mv&quot;</span>).<span class="property">innerHTML</span> = ans;</span><br><span class="line">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;bp&quot;</span>).<span class="property">innerHTML</span> = ans_num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;submit&#x27;</span>).<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params">event</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//每次按钮初始化</span></span><br><span class="line">    n=<span class="number">0</span>;</span><br><span class="line">    w=<span class="number">0</span>;</span><br><span class="line">    ans=<span class="number">0</span>;</span><br><span class="line">    ans_num.<span class="title function_">splice</span>(<span class="number">0</span>,ans_num.<span class="property">length</span>);</span><br><span class="line">    path.<span class="title function_">splice</span>(<span class="number">0</span>,path.<span class="property">length</span>);</span><br><span class="line">    bestpath.<span class="title function_">splice</span>(<span class="number">0</span>,bestpath.<span class="property">length</span>);</span><br><span class="line">    a.<span class="title function_">splice</span>(<span class="number">0</span>,a.<span class="property">length</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 总重量</span></span><br><span class="line">    w =<span class="built_in">parseInt</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;w&#x27;</span>).<span class="property">value</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 每个物品的价值</span></span><br><span class="line">    <span class="keyword">var</span> v_str =  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;val&#x27;</span>).<span class="property">value</span> ;</span><br><span class="line">    <span class="keyword">var</span> values = v_str.<span class="title function_">split</span>( <span class="string">&#x27;,&#x27;</span> );</span><br><span class="line">    values=values.<span class="title function_">map</span>(<span class="title class_">Number</span>);</span><br><span class="line">    <span class="comment">// 获取物品的个数</span></span><br><span class="line">    n = values.<span class="property">length</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//每个物品的重量</span></span><br><span class="line">    <span class="keyword">var</span> w_str =  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;wei&#x27;</span>).<span class="property">value</span> ;</span><br><span class="line">    <span class="keyword">var</span> weights = w_str.<span class="title function_">split</span>( <span class="string">&#x27;,&#x27;</span> );</span><br><span class="line">    weights=weights.<span class="title function_">map</span>(<span class="title class_">Number</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可行性检查</span></span><br><span class="line">    <span class="keyword">if</span>(values.<span class="property">length</span> == weights.<span class="property">length</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="title function_">init</span>(values,weights)</span><br><span class="line">        <span class="title function_">search</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">        <span class="title function_">output</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&#x27;重量 和 价值 不对应，数目不同。&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><h2 id="熟能生巧"><a href="#熟能生巧" class="headerlink" title="熟能生巧"></a>熟能生巧</h2><p>显而易见，分支限界法能够大大降低选择的次数。<br>仔细观察，蛮力算法、回溯法、分支限界法，你会发现，回溯法就是在蛮力上的一种及时止损，分支限界法同样也是在回溯法上的一种及时止损。<br>单就分支限界法来说，若能选择合适的代价函数，则能更快地解决问题，这是十分明显的。</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E4%BD%9C%E4%B8%9A/">作业</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/a2f3f3636eeb.html"
+                                   title="UML导图"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">UML导图</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/07b6c55efa95.html"
+                                   title="分支限界法解0-1背包问题——基于JavaScript"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">分支限界法解0-1背包问题——基于JavaScript</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="twikoo-container">
+        <div id="twikoo-comment"></div>
+        <script 
+                src="//unpkg.com/twikoo@1.6.22/dist/twikoo.all.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initTwikoo = () => {
+            if (window?.twikoo) {
+              twikoo.init({
+                el: '#twikoo-comment',
+                envId: 'https://hankzhang-comment.netlify.app/.netlify/functions/twikoo',
+                region: '',
+                lang: 'zh-CN' || 'zh-CN'
+              })
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initTwikoo()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initTwikoo()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initTwikoo)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%94-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">实验五  回溯算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="nav-number">1.1.</span> <span class="nav-text">实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="nav-number">1.2.</span> <span class="nav-text">实验要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-number">1.3.</span> <span class="nav-text">实验内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BA%9B"><span class="nav-number">2.1.</span> <span class="nav-text">具体些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9B%9E%E6%BA%AF"><span class="nav-number">2.2.</span> <span class="nav-text">如何回溯</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">源程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">心得体会</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%86%9F%E8%83%BD%E7%94%9F%E5%B7%A7"><span class="nav-number">5.1.</span> <span class="nav-text">熟能生巧</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Hank</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+                
+                <div class="deploy-info info-item default">
+                    
+                        本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%94-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">实验五  回溯算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="nav-number">1.1.</span> <span class="nav-text">实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="nav-number">1.2.</span> <span class="nav-text">实验要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-number">1.3.</span> <span class="nav-text">实验内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BA%9B"><span class="nav-number">2.1.</span> <span class="nav-text">具体些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9B%9E%E6%BA%AF"><span class="nav-number">2.2.</span> <span class="nav-text">如何回溯</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">源程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">心得体会</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%86%9F%E8%83%BD%E7%94%9F%E5%B7%A7"><span class="nav-number">5.1.</span> <span class="nav-text">熟能生巧</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/utils.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/header-shrink.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/back2top.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/toggle-theme.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/code-block.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/main.js"></script><script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//unpkg.com/hexo-theme-keep@4.0.6/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
